@@ -115,6 +115,13 @@ steps:
     event:
     - push
 
+- name: sonarqube-scan
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/sonar-scanner-node:latest
+  when:
+    event:
+    - pull_request
+
 - name: vulnerability-scan
   pull: always
   image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
