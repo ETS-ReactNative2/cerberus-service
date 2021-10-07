@@ -1,5 +1,6 @@
 {
   "taskListDetail": ["Pre-ArrivalClaim",
+    "Scenario 1 Rule, Tier 1, Class A Drugs and 0 other rules",
     "Brittany Ferries voyage of BARFLEURarrival a year ago",
     "DOV4 Aug 2020 at 14:05CAL4 Aug 2020 at 14:35",
     "Driver detailsBenBaileyDOB: 27/10/1969? trips",
@@ -19,19 +20,22 @@
     "AccountUniveral Printers Ltd, booked on 2 Aug 2020 at 09:15",
     "HaulierMatthesons"
   ],
-
-  "Vehicle registration": "COP1",
-  "Type": "HGV",
-  "Make": "Model-xyz",
-  "Model": "Make-123",
-  "Country of registration": "GB",
-  "Colour": "Colour-White",
-  "Trailer registration number": "NL-234-392",
-  "Trailer type": "TR",
-  "Trailer country of registration": "",
-  "Empty or loaded": "Loaded",
-  "Trailer length": "36m",
-  "Trailer height": "3.6m",
+  "vehicle": {
+    "Vehicle registration": "COP1",
+    "Type": "HGV",
+    "Make": "Model-xyz",
+    "Model": "Make-123",
+    "Country of registration": "GB",
+    "Colour": "Colour-White",
+    "Net weight": "3455kg",
+    "Gross weight": "43623kg",
+    "Trailer registration number": "NL-234-392",
+    "Trailer type": "TR",
+    "Trailer country of registration": "",
+    "Empty or loaded": "Loaded",
+    "Trailer length": "36m",
+    "Trailer height": "3.6m"
+  },
   "account": {
     "Full name": "Univeral Printers Ltd",
     "Short name": "",
@@ -58,7 +62,7 @@
   },
   "goods": {
     "Description of goods": "Printed Paper",
-    "Is cargo hazardous?": "false",
+    "Is cargo hazardous?": "No",
     "Weight of goods": ""
   },
   "booking": {
@@ -71,7 +75,8 @@
     "Country": "GB",
     "Payment method": "Account",
     "Ticket price": "£30 quid",
-    "Ticket type": "Return"
+    "Ticket type": "Return",
+    "Check-in": "4 Aug 2020 at 12:05"
   }
 }
 

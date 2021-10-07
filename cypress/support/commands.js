@@ -512,7 +512,7 @@ Cypress.Commands.add('verifyTaskDetailSection', (expData, versionInRow, sectionn
   if (versionInRow == null) {
     versionInRow = 1;
   }
-  cy.get(`#task-versions-content-${versionInRow}`).within(() => {
+  cy.get(`[id$=-content-${versionInRow}]`).within(() => {
     cy.contains('h2', sectionname)
       .next()
       .within(() => {
@@ -531,29 +531,55 @@ Cypress.Commands.add('verifyTaskDetailAllSections', (expectedDetails, versionInR
   businessKey = encodeURIComponent(businessKey);
   cy.visit(`/tasks/${businessKey}`);
 
+  const sectionHeading = new Map();
+  sectionHeading.set('vehicle', 'Vehicle details');
+  sectionHeading.set('account', 'Account details');
+  sectionHeading.set('haulier', 'Haulier details');
+  sectionHeading.set('driver', 'Driver');
+  sectionHeading.set('passengers', 'Passengers');
+  sectionHeading.set('goods', 'Goods');
+  sectionHeading.set('booking', 'Booking and check-in');
+  sectionHeading.set('rulesMatched', 'Rules matched');
+  sectionHeading.set('selectorMatch', 'selectorMatch');
+
+  // close all in order to expand the correct version
+  cy.get('.govuk-accordion__open-all').invoke('text').then(($text) => {
+    if ($text === 'Close all') {
+      cy.get('.govuk-accordion__open-all').click();
+    }
+  });
+
+  // Check section in expectedDetails(Json file) is a valid section
+  Object.entries(expectedDetails).forEach(([key, value]) => {
+    let sections = Array.from(sectionHeading.keys());
+    if (sectionHeading.has(key) === false && key !== 'taskListDetail' && key !== 'taskSummary') {
+      throw new Error(`Section "${key}" in json file is not valid. ${sections}`);
+    }
+  });
+
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'vehicle')) {
-    cy.verifyTaskDetailSection(expectedDetails.vehicle, versionInRow, 'Vehicle details');
+    cy.verifyTaskDetailSection(expectedDetails.vehicle, versionInRow, sectionHeading.get('vehicle'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'account')) {
-    cy.verifyTaskDetailSection(expectedDetails.account, versionInRow, 'Account details');
+    cy.verifyTaskDetailSection(expectedDetails.account, versionInRow, sectionHeading.get('account'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'haulier')) {
-    cy.verifyTaskDetailSection(expectedDetails.haulier, versionInRow, 'Haulier details');
+    cy.verifyTaskDetailSection(expectedDetails.haulier, versionInRow, sectionHeading.get('haulier'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'driver')) {
-    cy.verifyTaskDetailSection(expectedDetails.driver, versionInRow, 'Driver');
+    cy.verifyTaskDetailSection(expectedDetails.driver, versionInRow, sectionHeading.get('driver'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'passengers')) {
-    cy.verifyTaskDetailSection(expectedDetails.passengers, versionInRow, 'Passengers');
+    cy.verifyTaskDetailSection(expectedDetails.passengers, versionInRow, sectionHeading.get('passengers'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'goods')) {
-    cy.verifyTaskDetailSection(expectedDetails.goods, versionInRow, 'Goods');
+    cy.verifyTaskDetailSection(expectedDetails.goods, versionInRow, sectionHeading.get('goods'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'booking')) {
-    cy.verifyTaskDetailSection(expectedDetails.booking, versionInRow, 'Booking');
+    cy.verifyTaskDetailSection(expectedDetails.booking, versionInRow, sectionHeading.get('booking'));
   }
-  if (Object.prototype.hasOwnProperty.call(expectedDetails, 'rules')) {
-    cy.verifyTaskDetailSection(expectedDetails.rules, versionInRow, 'Rules matched');
+  if (Object.prototype.hasOwnProperty.call(expectedDetails, 'rulesMatched')) {
+    cy.verifyTaskDetailSection(expectedDetails.rules, versionInRow, sectionHeading.get('rulesMatched'));
   }
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'selectorMatch')) {
     cy.verifyTaskDetailSection(expectedDetails.selectorMatch, versionInRow, expectedDetails.selectorMatchSection);
