@@ -550,7 +550,7 @@ Cypress.Commands.add('verifyTaskDetailAllSections', (expectedDetails, versionInR
   });
 
   // Check section in expectedDetails(Json file) is a valid section
-  Object.entries(expectedDetails).forEach(([key, value]) => {
+  Object.entries(expectedDetails).forEach(([key]) => {
     let sections = Array.from(sectionHeading.keys());
     if (sectionHeading.has(key) === false && key !== 'taskListDetail' && key !== 'taskSummary') {
       throw new Error(`Section "${key}" in json file is not valid. ${sections}`);
