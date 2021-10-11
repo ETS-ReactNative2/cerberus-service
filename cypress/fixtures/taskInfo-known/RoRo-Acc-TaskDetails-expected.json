@@ -1,6 +1,5 @@
 {
   "taskListDetail": ["Pre-ArrivalClaim",
-    "Scenario 1 Rule, Tier 1, Class A Drugs and 0 other rules",
     "Brittany Ferries voyage of BARFLEURarrival a year ago",
     "DOV4 Aug 2020 at 14:05CAL4 Aug 2020 at 14:35",
     "Driver detailsBenBaileyDOB: 27/10/1969? trips",
@@ -27,8 +26,6 @@
     "Model": "Make-123",
     "Country of registration": "GB",
     "Colour": "Colour-White",
-    "Net weight": "3455kg",
-    "Gross weight": "43623kg",
     "Trailer registration number": "NL-234-392",
     "Trailer type": "TR",
     "Trailer country of registration": "",
@@ -62,7 +59,7 @@
   },
   "goods": {
     "Description of goods": "Printed Paper",
-    "Is cargo hazardous?": "No",
+    "Is cargo hazardous?": "false",
     "Weight of goods": ""
   },
   "booking": {
@@ -75,8 +72,7 @@
     "Country": "GB",
     "Payment method": "Account",
     "Ticket price": "£30 quid",
-    "Ticket type": "Return",
-    "Check-in": "4 Aug 2020 at 12:05"
+    "Ticket type": "Return"
   }
 }
 

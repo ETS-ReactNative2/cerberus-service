@@ -538,7 +538,7 @@ Cypress.Commands.add('verifyTaskDetailAllSections', (expectedDetails, versionInR
   sectionHeading.set('driver', 'Driver');
   sectionHeading.set('passengers', 'Passengers');
   sectionHeading.set('goods', 'Goods');
-  sectionHeading.set('booking', 'Booking and check-in');
+  sectionHeading.set('booking', 'Booking');
   sectionHeading.set('rulesMatched', 'Rules matched');
   sectionHeading.set('selectorMatch', 'selectorMatch');
 
