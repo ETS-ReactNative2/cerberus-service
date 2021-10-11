@@ -95,6 +95,8 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
 
     cy.fixture('tasks.json').then((task) => {
       cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-CLAIM-TASK-MANAGEMENT`).then((taskResponse) => {
+        cy.wait(4000);
+        cy.reload();
         let businessKey = encodeURIComponent(taskResponse.businessKey);
         if (Cypress.$(nextPage).length > 0) {
           cy.findTaskInAllThePages(`${businessKey}`, 'Claim').then((returnValue) => {
@@ -119,6 +121,10 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
     cy.get('.govuk-caption-xl').invoke('text').as('taskName');
 
     cy.contains('Back to task list').click();
+
+    cy.get('a[href="#in-progress"]').click();
+
+    cy.reload();
 
     cy.get('a[href="#in-progress"]').click();
 
