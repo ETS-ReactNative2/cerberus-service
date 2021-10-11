@@ -159,8 +159,9 @@ steps:
     DOCKER_USERNAME:
       from_secret: QUAY_USERNAME
   when:
-    tag:
-       - r-v-1.5.5.1
+    branch:
+      exlude:
+        - main
     event:
        - push
 
@@ -392,8 +393,9 @@ steps:
     JOB_NAME: "\"cerberus-functional-tests-staging\""
     TEST_ENV: staging
   when:
-    tag:
-      - r-v-1.5.5.1
+    branch:
+      exlude:
+        - main
     event:
       - push
 
