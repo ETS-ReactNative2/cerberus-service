@@ -160,9 +160,10 @@ steps:
       from_secret: QUAY_USERNAME
   when:
     branch:
-       - main
+      exclude:
+        - main
     event:
-       - push
+      - push
 
 - name: deploy_to_dev
   pull: if-not-exists
@@ -329,11 +330,10 @@ steps:
     TEST_ENV: sit
   when:
     branch:
-      - main
+      exclude:
+        - main
     event:
-      - promote
-    target:
-      - sit
+      - push
 
 - name: create_testjob_staging
   pull: always
