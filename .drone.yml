@@ -395,7 +395,7 @@ steps:
   when:
     branch:
       exclude:
-       - main
+        - main
     event:
       - push
 
