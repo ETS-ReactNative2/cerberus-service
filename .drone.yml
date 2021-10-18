@@ -160,10 +160,10 @@ steps:
       from_secret: QUAY_USERNAME
   when:
     branch:
-       exclude:
-         - main
+      exclude:
+      - main
     event:
-       - push
+    - push
 
 - name: deploy_to_dev
   pull: if-not-exists
@@ -395,9 +395,9 @@ steps:
   when:
     branch:
       exclude:
-        - main
+      - main
     event:
-      - push
+    - push
 
 - name: deploy_to_sit
   pull: if-not-exists
