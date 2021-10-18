@@ -160,7 +160,8 @@ steps:
       from_secret: QUAY_USERNAME
   when:
     branch:
-       - main
+       exclude:
+         - main
     event:
        - push
 
@@ -393,11 +394,10 @@ steps:
     TEST_ENV: staging
   when:
     branch:
-      - main
+      exclude:
+       - main
     event:
-      - promote
-    target:
-      - staging
+      - push
 
 - name: deploy_to_sit
   pull: if-not-exists
