@@ -187,7 +187,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
     cy.selectDropDownValue('nominalType', 'Account');
 
-    cy.multiSelectDropDown('threatIndicators', ['Paid by cash', 'Change of account (Diver)']);
+    cy.multiSelectDropDown('threatIndicators', ['Paid by cash', 'Change of account (Driver)']);
 
     cy.selectDropDownValue('checks', 'Anti Fraud Information System');
 
@@ -290,7 +290,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
     cy.selectDropDownValue('nominalType', 'Account');
 
-    cy.multiSelectDropDown('threatIndicators', ['Paid by cash', 'Change of account (Diver)']);
+    cy.multiSelectDropDown('threatIndicators', ['Paid by cash', 'Change of account (Driver)']);
 
     cy.selectDropDownValue('checks', 'Anti Fraud Information System');
 
