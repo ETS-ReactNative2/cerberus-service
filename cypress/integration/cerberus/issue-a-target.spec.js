@@ -358,7 +358,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
     cy.get('.formio-component-note textarea').should('not.exist');
   });
 
-  it('Should check target indicators displayed sorted order in the drop down list', () => {
+  it.skip('Should check target indicators displayed sorted order in the drop down list', () => {
     cy.getUnassignedTasks().then((tasks) => {
       cy.navigateToTaskDetailsPage(tasks);
     });
