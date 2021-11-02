@@ -330,10 +330,11 @@ steps:
     TEST_ENV: sit
   when:
     branch:
-      exclude:
-        - main
+      - main
     event:
-      - push
+      - promote
+    target:
+      - sit
 
 - name: create_testjob_staging
   pull: always
@@ -393,11 +394,10 @@ steps:
     TEST_ENV: staging
   when:
     branch:
-      - main
+      exclude:
+        - main
     event:
-      - promote
-    target:
-      - staging
+      - push
 
 - name: deploy_to_sit
   pull: if-not-exists
