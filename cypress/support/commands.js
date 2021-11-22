@@ -487,7 +487,7 @@ Cypress.Commands.add('checkTaskSummary', (registrationNumber, bookingDateTime) =
 });
 
 Cypress.Commands.add('deleteAutomationTestData', () => {
-  let dateNowFormatted = Cypress.dayjs().subtract('1', 'd').format('DD-MM-YYYY');
+  let dateNowFormatted = Cypress.dayjs().subtract(1, 'day').format('DD-MM-YYYY');
   cy.request({
     method: 'POST',
     url: `https://${cerberusServiceUrl}/camunda/engine-rest/process-instance`,
@@ -561,9 +561,126 @@ Cypress.Commands.add('verifyTaskSummary', (taskSummary) => {
   cy.get('.card').should('contain.text', taskSummary);
 });
 
-Cypress.Commands.add('verifyTaskListInfo', (taskListDetail, businessKey) => {
+// Cypress.Commands.add('verifyTaskListInfo', (taskListDetail, businessKey) => {
+//   cy.visit('/tasks');
+//   cy.get('.task-list--item').contains(encodeURIComponent(businessKey)).closest('section').should('contain.text', taskListDetail);
+// });
+
+Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
+  let taskSummary = {};
   cy.visit('/tasks');
-  cy.get('.task-list--item').contains(encodeURIComponent(businessKey)).closest('section').should('contain.text', taskListDetail);
+  cy.get('.task-list--item').contains(encodeURIComponent(businessKey)).closest('section').then((element) => {
+    cy.wrap(element).find('h4.task-heading').invoke('text').then((mode) => {
+      taskSummary.mode = mode;
+    });
+    cy.wrap(element).find('.task-risk-statement').invoke('text').then((rules) => {
+      taskSummary.rules = rules;
+    });
+    cy.wrap(element).find('.content-line-one li').each((section, index) => {
+      cy.wrap(section).invoke('text').then((info) => {
+        if (index === 0) {
+          taskSummary.voyage = info;
+        } else {
+          taskSummary.arrival = info;
+        }
+      });
+    });
+
+    cy.wrap(element).find('.content-line-two li').each((section, index) => {
+      cy.wrap(section).invoke('text').then((info) => {
+        if (index === 0) {
+          taskSummary.departurePort = info;
+        } else if (index === 1) {
+          taskSummary.departureDateTime = info;
+        } else if (index === 2) {
+          taskSummary.arrivalPort = info;
+        } else {
+          taskSummary.arrivalDateTime = info;
+        }
+      });
+    });
+
+    cy.wrap(element).contains('Driver details').next().then((driverDetails) => {
+      cy.wrap(driverDetails).find('li').each((details, index) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          if (index === 0) {
+            taskSummary.driverFirstName = info;
+          } else if (index === 1) {
+            taskSummary.driverLastName = info;
+          } else {
+            taskSummary.driverNumberOfTrips = info;
+          }
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Vehicle details').next().then((vehicleDetails) => {
+      cy.wrap(vehicleDetails).find('li').each((details, index) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          if (index === 0) {
+            taskSummary.vehicleRegistration = info;
+          } else if (index === 1) {
+            taskSummary.vehicleMake = info;
+          } else if (index === 2) {
+            taskSummary.vehicleModel = info;
+          } else {
+            taskSummary.vehicleNumberOfTrips = info;
+          }
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Account details').next().then((accountDetails) => {
+      cy.wrap(accountDetails).find('li').each((details, index) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          if (index === 0) {
+            taskSummary.bookedDateTime = info;
+          } else {
+            taskSummary.bookedDetails = info;
+          }
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Haulier details').next().then((haulierDetails) => {
+      cy.wrap(haulierDetails).find('li').each((details) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          taskSummary.haulier = info;
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Goods details').next().then((goodsDetails) => {
+      cy.wrap(goodsDetails).find('li').each((details) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          taskSummary.goods = info;
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Passenger details').next().then((passengerDetails) => {
+      cy.wrap(passengerDetails).find('li').each((details) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          taskSummary.passengerDetails = info;
+        });
+      });
+    });
+
+    cy.wrap(element).contains('Trailer details').next().then((trailerDetails) => {
+      cy.wrap(trailerDetails).find('li').each((details, index) => {
+        cy.wrap(details).invoke('text').then((info) => {
+          if (index === 0) {
+            taskSummary.trailerRegitration = info;
+          } else {
+            taskSummary.trailerTrips = info;
+          }
+        });
+      });
+    });
+  })
+    .then(() => {
+      return taskSummary;
+    });
 });
 
 Cypress.Commands.add('verifyTaskDetailSection', (expData, versionInRow, sectionname) => {
@@ -645,9 +762,18 @@ Cypress.Commands.add('verifyTaskDetailAllSections', (expectedDetails, versionInR
   }
 });
 
-Cypress.Commands.add('checkTaskSummaryDetails', (expectedSummary) => {
-  cy.get('.govuk-grid-row dl.mode-details dd').each((element, index) => {
-    cy.wrap(element).should('contain.text', expectedSummary[index]);
+Cypress.Commands.add('checkTaskSummaryDetails', () => {
+  let taskSummary = {};
+  cy.get('.govuk-grid-row dl.mode-details dt').each((keyElement) => {
+    cy.wrap(keyElement).invoke('text').then((key) => {
+      cy.log('key', key);
+      cy.wrap(keyElement).next().invoke('text').then((value) => {
+        cy.log('value', value);
+        taskSummary[key] = value;
+      });
+    });
+  }).then(() => {
+    return taskSummary;
   });
 });
 
@@ -683,7 +809,7 @@ Cypress.Commands.add('removeOptionFromMultiSelectDropdown', (elementName, values
 });
 
 Cypress.Commands.add('createCerberusTask', (payload, taskName) => {
-  let expectedTaskSummary = [];
+  let expectedTaskSummary = {};
   let date = new Date();
   let dateNowFormatted = Cypress.dayjs(date).format('DD-MM-YYYY');
   const dateFormat = 'D MMM YYYY [at] HH:mm';
@@ -700,18 +826,20 @@ Cypress.Commands.add('createCerberusTask', (payload, taskName) => {
       let departureDateTime = Cypress.dayjs(voyage.actualDepartureTimestamp).utc().format(dateFormat);
       let arrivalDateTime = Cypress.dayjs(voyage.actualArrivalTimestamp).utc().format(dateFormat);
       cy.log('departure and arrival time', departureDateTime, arrivalDateTime);
-      expectedTaskSummary.push(`${voyage.carrier} voyage of ${voyage.craftId}`);
-      expectedTaskSummary.push(`${voyage.departureLocation}, ${departureDateTime}`);
-      expectedTaskSummary.push(`${voyage.arrivalLocation}, ${arrivalDateTime}`);
-      expectedTaskSummary.push('unknown');
-      expectedTaskSummary.push('unknown');
+      expectedTaskSummary.Ferry = `${voyage.carrier} voyage of ${voyage.craftId}`;
+      expectedTaskSummary.Departure = `${voyage.departureLocation}, ${departureDateTime}`;
+      expectedTaskSummary.Arrival = `${voyage.arrivalLocation}, ${arrivalDateTime}`;
+      expectedTaskSummary.Account = 'unknown';
+      expectedTaskSummary.Haulier = 'unknown';
     }
     task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
     cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-${mode}-${taskName}`).then((response) => {
       cy.wait(4000);
       cy.checkTaskDisplayed(`${response.businessKey}`);
       if (taskName.includes('TSV')) {
-        cy.checkTaskSummaryDetails(expectedTaskSummary);
+        cy.checkTaskSummaryDetails().then((taskSummary) => {
+          expect(expectedTaskSummary).to.deep.equal(taskSummary);
+        });
       }
       cy.checkTaskSummary(registrationNumber, bookingDateTime);
     });
@@ -748,5 +876,14 @@ Cypress.Commands.add('applyPreArrivalFilter', (mode, taskType) => {
   cy.wait(2000);
   cy.get(`a[href="#${taskType}"]`).invoke('text').then((targets) => {
     return parseInt(targets.match(/\d+/)[0], 10);
+  });
+});
+
+Cypress.Commands.add('verifyBookingDateTime', (expectedBookingDateTime) => {
+  cy.contains('h2', 'Booking and check-in').next().within(() => {
+    cy.getTaskDetails().then((details) => {
+      const bookingDateTime = Object.fromEntries(Object.entries(details).filter(([key]) => key.includes('Date and time')));
+      expect(bookingDateTime['Date and time']).to.be.equal(expectedBookingDateTime);
+    });
   });
 });
