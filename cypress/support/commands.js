@@ -649,7 +649,7 @@ Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
       });
     });
 
-    cy.wrap(element).contains('Goods description').next().then((goodsDetails) => {
+    cy.wrap(element).contains('Goods details').next().then((goodsDetails) => {
       cy.wrap(goodsDetails).find('li').each((details) => {
         cy.wrap(details).invoke('text').then((info) => {
           taskSummary.goods = info;
@@ -669,7 +669,7 @@ Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
       cy.wrap(trailerDetails).find('li').each((details, index) => {
         cy.wrap(details).invoke('text').then((info) => {
           if (index === 0) {
-            taskSummary.trailerRegitration = info;
+            taskSummary.trailerRegistration = info;
           } else {
             taskSummary.trailerTrips = info;
           }

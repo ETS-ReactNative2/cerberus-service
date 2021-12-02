@@ -320,19 +320,6 @@
                     "startTimestamp": null,
                     "endTimestamp": null
                   },
-                  "RORO-BOOKING-MOVEMENT-CO-TRAVELLERS": {
-                    "id": null,
-                    "type": null,
-                    "valueType": "STRING",
-                    "value": null,
-                    "valueList": {
-                      "val": [
-                        "Brown|Bob|M|435|NL|244746NL|null|18659|NL|PERTDRIVER|ROROXML:P=33f544d684db9e59150ae84406709122"
-                      ]
-                    },
-                    "startTimestamp": null,
-                    "endTimestamp": 1626169142839
-                  },
                   "SELECTOR-MATCHED": {
                     "id": null,
                     "type": null,
@@ -411,7 +398,7 @@
                 },
                 "type": "PERSON",
                 "person": {
-                  "type": "PERPAS",
+                  "type": "PERTDRIVER",
                   "title": null,
                   "familyName": "Bailey",
                   "givenName": "Ben",
@@ -432,7 +419,7 @@
                 },
                 "attributes": {
                   "attrs": {
-                    "role": "PASSENGER"
+                    "role": "DRIVER"
                   }
                 },
                 "matching": null,
