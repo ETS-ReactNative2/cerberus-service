@@ -438,6 +438,172 @@
                 "washResponses": null,
                 "matchMerge": null,
                 "changeHistory": null
+              },
+              {
+                "metadata": {
+                  "identityRecord": {
+                    "poleId": {
+                      "v2": {
+                        "id": "ROROTSV:P=0e75150abaa1101a877c550397b8a53d"
+                      },
+                      "v1": null
+                    },
+                    "type": "P"
+                  },
+                  "sourceRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.SourceRecord": {
+                      "name": "ROROTSV",
+                      "shortName": {
+                        "string": "ROT"
+                      },
+                      "location": {
+                        "string": "archive/GroupId=none/CollectionDate=2021-01-13/DataFeedId=6/DataFeedTaskId=5838526/CERBERUS_8_rorotsv_freight_AccompTrailer_voyage2"
+                      },
+                      "id": {
+                        "string": "0e75150abaa1101a877c550397b8a53c"
+                      },
+                      "audit": {
+                        "createdBy": {
+                          "string": "Fe+pMgMN+NFYnEMEp198pw=="
+                        },
+                        "createdTimestamp": {
+                          "long": 1596817140000
+                        },
+                        "updatedBy": null,
+                        "updatedTimestamp": null,
+                        "deletedBy": null,
+                        "deletedTimestamp": null
+                      }
+                    }
+                  },
+                  "complianceRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.ComplianceRecord": {
+                      "visibility": "UNKNOWN",
+                      "gscMarker": null,
+                      "retentionMarkerDays": -1
+                    }
+                  },
+                  "mappingRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.MappingRecord": {
+                      "name": "RR-TSV-Party",
+                      "version": {
+                        "string": "1"
+                      }
+                    }
+                  }
+                },
+                "type": "PERSON",
+                "person": {
+                  "type": "PERPAS",
+                  "title": null,
+                  "familyName": "Flintstone",
+                  "givenName": "Fred",
+                  "fullName": "Fred Flintstone",
+                  "dateOfBirth": 7865,
+                  "dateOfDeath": null,
+                  "gender": "F",
+                  "nationality": "DE",
+                  "yearOfBirth": "1983",
+                  "monthOfBirth": "09",
+                  "dayOfBirth": "09",
+                  "countryOfBirth": "DE",
+                  "placeOfBirth": "Frankfurt",
+                  "ethnicity": "German",
+                  "maritalStatus": null,
+                  "religion": null,
+                  "passportNumber": null
+                },
+                "attributes": {
+                  "attrs": {
+                    "role": "PASSENGER"
+                  }
+                },
+                "matching": null,
+                "features": null,
+                "changeHistory": null
+              },
+              {
+                "metadata": {
+                  "identityRecord": {
+                    "poleId": {
+                      "v2": {
+                        "id": "ROROTSV:P=0e75150abaa1101a877c550397b8a53e"
+                      },
+                      "v1": null
+                    },
+                    "type": "P"
+                  },
+                  "sourceRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.SourceRecord": {
+                      "name": "ROROTSV",
+                      "shortName": {
+                        "string": "ROT"
+                      },
+                      "location": {
+                        "string": "archive/GroupId=none/CollectionDate=2021-01-13/DataFeedId=6/DataFeedTaskId=5838526/CERBERUS_8_rorotsv_freight_AccompTrailer_voyage2"
+                      },
+                      "id": {
+                        "string": "0e75150abaa1101a877c550397b8a53c"
+                      },
+                      "audit": {
+                        "createdBy": {
+                          "string": "Fe+pMgMN+NFYnEMEp198pw=="
+                        },
+                        "createdTimestamp": {
+                          "long": 1596817140000
+                        },
+                        "updatedBy": null,
+                        "updatedTimestamp": null,
+                        "deletedBy": null,
+                        "deletedTimestamp": null
+                      }
+                    }
+                  },
+                  "complianceRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.ComplianceRecord": {
+                      "visibility": "UNKNOWN",
+                      "gscMarker": null,
+                      "retentionMarkerDays": -1
+                    }
+                  },
+                  "mappingRecord": {
+                    "uk.gov.ho.dacc.pole.metadata.MappingRecord": {
+                      "name": "RR-TSV-Party",
+                      "version": {
+                        "string": "1"
+                      }
+                    }
+                  }
+                },
+                "type": "PERSON",
+                "person": {
+                  "type": "PERPAS",
+                  "title": null,
+                  "familyName": "Rubble",
+                  "givenName": "Barney",
+                  "fullName": "Barney Rubble",
+                  "dateOfBirth": 7862,
+                  "dateOfDeath": null,
+                  "gender": "M",
+                  "nationality": "GB",
+                  "yearOfBirth": null,
+                  "monthOfBirth": null,
+                  "dayOfBirth": "",
+                  "countryOfBirth": null,
+                  "placeOfBirth": null,
+                  "ethnicity": null,
+                  "maritalStatus": null,
+                  "religion": null,
+                  "passportNumber": null
+                },
+                "attributes": {
+                  "attrs": {
+                    "role": "PASSENGER"
+                  }
+                },
+                "matching": null,
+                "features": null,
+                "changeHistory": null
               }
             ],
             "organisations": [
@@ -1245,7 +1411,7 @@
                 "scheduledArrivalTimestamp": null,
                 "actualArrivalTimestamp": null,
                 "intermediateLocations": null,
-                "passengerCount": null,
+                "passengerCount": 2,
                 "crewCount": null,
                 "durationMinutes": null,
                 "routeId": null,

@@ -200,6 +200,7 @@ describe('Filter tasks by Selectors on task management Page', () => {
           expect(expectedTargets).be.equal(actualTargets);
         });
         cy.reload();
+        cy.wait(2000);
         cy.getNumberOfTasksBySelectors(selector, 'New').then((expectedTargets) => {
           expect(expectedTargets).be.equal(actualTargets);
         });

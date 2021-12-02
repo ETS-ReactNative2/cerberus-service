@@ -20,8 +20,9 @@
     "haulier": "Matthesons",
     "goods": "Printed Paper",
     "passengerDetails": "1 passenger",
-    "trailerRegitration": "NL-234-392",
-    "trailerTrips": "0 trips"
+    "trailerRegistration": "NL-234-392",
+    "trailerTrips": "0 trips",
+    "riskScore": "Risk Score: 80"
   },
   "taskSummary": {
     "Ferry": "Brittany Ferries voyage of BARFLEUR",
@@ -75,7 +76,7 @@
         "Travel document expiry": ""
       },
       "goods": {
-        "Description": "Printed Paper",
+        "Description of goods": "Printed Paper",
         "Is cargo hazardous?": "No",
         "Weight of goods": ""
       },

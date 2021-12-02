@@ -192,6 +192,7 @@ describe('Filter tasks by pre-arrival mode on task management Page', () => {
           expect(expectedTargets).be.equal(actualTargets);
         });
         cy.reload();
+        cy.wait(2000);
         cy.getNumberOfTasksByMode(mode, 'New').then((expectedTargets) => {
           expect(expectedTargets).be.equal(actualTargets);
         });

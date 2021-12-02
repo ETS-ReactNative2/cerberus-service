@@ -8,7 +8,7 @@
         "Vehicle registration": "GB09KLT-2000",
         "Type": "",
         "Make": "LandRover",
-        "Model": "Discovery",
+        "Model": "",
         "Country of registration": "DE",
         "Trailer registration number": "NL-234-392",
         "Trailer type": "TR",
@@ -19,10 +19,10 @@
       },
       "account": {
         "Full name": "Testing Printers Ltd",
-        "Short name": "Test Highlights name",
+        "Short name": "",
         "Reference number": "PO000355555",
         "Address": "Unit 11-12 Pink Way Bognoris Regis E209JB GB",
-        "Telephone": "01234 56724747",
+        "Telephone": "",
         "Mobile": "",
         "Email": ""
       },
@@ -34,8 +34,8 @@
       },
       "driver": {
         "Name": "Bobby Brownshoes",
-        "Date of birth": "17/03/1971",
-        "Gender": "F",
+        "Date of birth": "",
+        "Gender": "",
         "Nationality": "FR",
         "Travel document type": "OBJDOCPAS",
         "Travel document number": "244746NL",
@@ -45,13 +45,13 @@
         "Name": "Ken Bailey",
         "Date of birth": "03/10/1969",
         "Gender": "F",
-        "Nationality": "FR",
+        "Nationality": "",
         "Travel document type": "OBJDOCPAS",
         "Travel document number": "244746NL",
         "Travel document expiry": "14/03/2021"
       },
       "goods": {
-        "Description": "Printed Paper",
+        "Description of goods": "Printed Paper",
         "Is cargo hazardous?": "No",
         "Weight of goods": ""
       },
@@ -218,7 +218,7 @@
         "Vehicle registration": "GB09KLT-10684",
         "Type": "",
         "Make": "",
-        "Model": "",
+        "Model": "Discovery",
         "Country of registration": "GB",
         "Trailer registration number": "NL-234-392",
         "Trailer type": "TR",
@@ -261,7 +261,7 @@
         "Travel document expiry": ""
       },
       "goods": {
-        "Description": "Printed Paper",
+        "Description of goods": "Printed Paper",
         "Is cargo hazardous?": "No",
         "Weight of goods": ""
       },

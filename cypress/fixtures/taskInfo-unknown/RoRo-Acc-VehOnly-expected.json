@@ -15,7 +15,8 @@
     "haulier": "Unknown",
     "goods": "Unknown",
     "passengerDetails": "Unknown",
-    "trailerRegitration": "0 trips"
+    "trailerRegistration": "0 trips",
+    "riskScore": "Risk Score:"
   },
   "taskSummary": {
     "Ferry": "Brittany Ferries voyage of BARFLEUR",
