@@ -130,20 +130,10 @@ steps:
 
 - name: sonarqube_scan
   pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/sonar-scanner:latest
-  commands:
-  - sonar-scanner
+  image: quay.io/ukhomeofficedigital/sonar-scanner-node:latest
   when:
     event:
-    - push
-    
-- name: code-analysis
-  image: aosapps/drone-sonar-plugin
-  settings:
-    sonar_host:
-      from_secret: sonar_host
-    sonar_token:
-      from_secret: sonar_token
+    - pull_request
       
 - name: image_to_quay
   image: plugins/docker
