@@ -128,6 +128,13 @@ steps:
     event:
     - push
 
+- name: pr_sonarqube_scan
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/sonar-scanner-node:latest
+  when:
+    event:
+    - push
+
 - name: image_to_quay
   image: plugins/docker
   settings:
