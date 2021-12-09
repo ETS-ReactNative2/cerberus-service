@@ -133,7 +133,7 @@ steps:
   image: quay.io/ukhomeofficedigital/sonar-scanner-node:latest
   when:
     event:
-    - pull_request
+    - push
       
 - name: image_to_quay
   image: plugins/docker
