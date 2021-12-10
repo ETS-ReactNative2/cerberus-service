@@ -16,6 +16,8 @@ steps:
   - npm -v
   - npm ci
   - npm run test
+  - pwd
+  - ls -al
   when:
     event:
     - push
