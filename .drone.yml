@@ -18,6 +18,9 @@ steps:
   - npm run test
   - pwd
   - ls -al
+  - ls coverage
+  - cd coverage
+  - ls -al
   when:
     event:
     - push
