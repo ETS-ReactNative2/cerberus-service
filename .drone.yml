@@ -130,8 +130,7 @@ steps:
 
 - name: sonarqube_scanner
   pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/sonar-scanner:latest
-         quay.io/ukhomeofficedigital/sonar-scanner-node:latest
+  image: quay.io/ukhomeofficedigital/sonar-scanner-node:latest
   when:
     event:
     - push
