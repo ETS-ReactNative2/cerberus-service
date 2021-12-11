@@ -9,7 +9,7 @@
     "lint": "eslint -f table --ext=js,jsx",
     "start": "webpack serve --mode=development",
     "test": "jest --coverage",
-    "owasp": "owasp-dependency-check --out=dependency-check-reports -f HTML",
+    "owasp": "owasp-dependency-check --project cerberus-service --out=dependency-check-reports -f HTML",
     "cypress:test:local": "node get_secrets.js local && cypress run",
     "cypress:test:dev": "node get_secrets.js dev && cypress run",
     "cypress:test:sit": "node get_secrets.js sit && cypress run",
@@ -91,6 +91,7 @@
     "webpack": "^5.12.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1",
-    "yargs": "^16.2.0"
+    "yargs": "^16.2.0",
+    "owasp-dependency-check":"^0.0.8"
   }
 }
