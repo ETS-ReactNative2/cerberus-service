@@ -16,6 +16,7 @@ steps:
   - npm -v
   - npm ci
   - npm run test
+  - npm run owasp
   - pwd
   - ls -al
   - ls coverage
