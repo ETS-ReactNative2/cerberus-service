@@ -8,7 +8,7 @@
     "build:dev": "webpack --mode=development",
     "lint": "eslint -f table --ext=js,jsx",
     "start": "webpack serve --mode=development",
-    "test": "jest",
+    "test": "jest --coverage",
     "cypress:test:local": "node get_secrets.js local && cypress run",
     "cypress:test:dev": "node get_secrets.js dev && cypress run",
     "cypress:test:sit": "node get_secrets.js sit && cypress run",
