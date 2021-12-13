@@ -40,7 +40,7 @@
     "Travel document expiry": "20/03/2025"
   },
   "goods": {
-    "Description of goods": "Liquid Nitrogen",
+    "Description": "Liquid Nitrogen",
     "Is cargo hazardous?": "No",
     "Weight of goods": ""
   },

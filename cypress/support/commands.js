@@ -328,6 +328,7 @@ Cypress.Commands.add('getAllProcessInstanceId', (businessKey) => {
 });
 
 Cypress.Commands.add('checkTaskDisplayed', (businessKey) => {
+  businessKey = encodeURIComponent(businessKey);
   cy.visit(`/tasks/${businessKey}`);
   cy.get('.govuk-caption-xl').should('have.text', businessKey);
 });
@@ -378,7 +379,7 @@ Cypress.Commands.add('getTasksByBusinessKey', (businessKey) => {
     headers: { Authorization: `Bearer ${token}` },
   }).then((response) => {
     expect(response.status).to.eq(200);
-    return response.body.filter((item) => item.assignee === null && item.name === 'Develop the task');
+    return response.body.filter((item) => item.assignee === null && item.name === 'Develop the Target');
   });
 });
 
@@ -441,6 +442,7 @@ Cypress.Commands.add('navigateToTaskDetailsPage', (task) => {
   expect(processInstanceId.length).to.not.equal(0);
   cy.intercept('GET', `/camunda/task?processInstanceId=${processInstanceId[0]}`).as('tasksDetails');
   cy.getBusinessKeyByProcessInstanceId(processInstanceId[0]).then((businessKey) => {
+    businessKey = encodeURIComponent(businessKey);
     cy.visit(`/tasks/${businessKey}`);
     cy.wait('@tasksDetails').then(({ response }) => {
       expect(response.statusCode).to.equal(200);
@@ -567,7 +569,7 @@ Cypress.Commands.add('verifyTaskSummary', (taskSummary) => {
 Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
   let taskSummary = {};
   cy.visit('/tasks');
-  cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
+  cy.get('.task-list--item').contains(encodeURIComponent(businessKey)).closest('section').then((element) => {
     cy.wrap(element).find('h4.task-heading').invoke('text').then((mode) => {
       taskSummary.mode = mode;
     });
@@ -649,7 +651,7 @@ Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
       });
     });
 
-    cy.wrap(element).contains('Goods details').next().then((goodsDetails) => {
+    cy.wrap(element).contains('Goods description').next().then((goodsDetails) => {
       cy.wrap(goodsDetails).find('li').each((details) => {
         cy.wrap(details).invoke('text').then((info) => {
           taskSummary.goods = info;
@@ -669,7 +671,7 @@ Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
       cy.wrap(trailerDetails).find('li').each((details, index) => {
         cy.wrap(details).invoke('text').then((info) => {
           if (index === 0) {
-            taskSummary.trailerRegistration = info;
+            taskSummary.trailerRegitration = info;
           } else {
             taskSummary.trailerTrips = info;
           }

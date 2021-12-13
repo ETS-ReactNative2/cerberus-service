@@ -51,7 +51,7 @@
         "Travel document expiry": "14/03/2021"
       },
       "goods": {
-        "Description of goods": "Printed Paper",
+        "Description": "Printed Paper",
         "Is cargo hazardous?": "No",
         "Weight of goods": ""
       },
@@ -261,7 +261,7 @@
         "Travel document expiry": ""
       },
       "goods": {
-        "Description of goods": "Printed Paper",
+        "Description": "Printed Paper",
         "Is cargo hazardous?": "No",
         "Weight of goods": ""
       },

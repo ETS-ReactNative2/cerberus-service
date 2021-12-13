@@ -25,7 +25,7 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
     });
   });
 
-  it('Should verify Back to task list workflow', () => {
+  it.skip('Should verify Back to task list workflow', () => {
     cy.get('.govuk-tabs__list li a[href="#new"]').then((element) => {
       cy.backToTaskList(element, 'New');
     });
@@ -124,7 +124,7 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
       cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-CLAIM-TASK-MANAGEMENT`).then((taskResponse) => {
         cy.wait(4000);
         cy.reload();
-        let businessKey = taskResponse.businessKey;
+        let businessKey = encodeURIComponent(taskResponse.businessKey);
         if (Cypress.$(nextPage).length > 0) {
           cy.findTaskInAllThePages(`${businessKey}`, 'Claim', null).then((returnValue) => {
             expect(returnValue).to.equal(true);
@@ -349,7 +349,8 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
       cy.postTasks(task, null).then((response) => {
         cy.wait(15000);
         cy.checkTaskDisplayed(`${response.businessKey}`);
-        cy.getAllProcessInstanceId(`${response.businessKey}`).then((res) => {
+        let encodedBusinessKey = encodeURIComponent(`${response.businessKey}`);
+        cy.getAllProcessInstanceId(encodedBusinessKey).then((res) => {
           expect(res.body.length).to.not.equal(0);
           expect(res.body.length).to.equal(1);
         });
