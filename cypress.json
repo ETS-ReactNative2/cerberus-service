@@ -11,6 +11,7 @@
   "testFiles": "**/cerberus/*.js",
   "video": false,
   "watchForFileChanges": false,
+  "numTestsKeptInMemory": 5,
   "reporter": "mochawesome",
   "reporterOptions": {
     "reportDir": "mochawesome-report",
