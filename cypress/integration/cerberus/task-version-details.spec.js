@@ -348,6 +348,13 @@ describe('Task Details of different tasks on task details Page', () => {
       cy.wrap(version).invoke('attr', 'aria-expanded').should('equal', expectedDefaultExpandStatus[index]);
     });
 
+    cy.visit('/tasks');
+
+    cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+      .click({ force: true });
+
+    cy.contains('Apply filters').click();
+
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
 
@@ -463,6 +470,13 @@ describe('Task Details of different tasks on task details Page', () => {
       });
     });
     cy.get('.govuk-accordion__section-heading').should('have.length', 3);
+
+    cy.visit('/tasks');
+
+    cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+      .click({ force: true });
+
+    cy.contains('Apply filters').click();
 
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
@@ -592,6 +606,13 @@ describe('Task Details of different tasks on task details Page', () => {
 
     cy.get('.govuk-accordion__section-heading').should('have.length', 3);
 
+    cy.visit('/tasks');
+
+    cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+      .click({ force: true });
+
+    cy.contains('Apply filters').click();
+
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
 
@@ -658,12 +679,21 @@ describe('Task Details of different tasks on task details Page', () => {
       });
     });
 
+    const nextPage = 'a[data-test="next"]';
     cy.visit('/tasks');
-    cy.findTaskInAllThePages(businessKey, null, null).then(() => {
-      cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
-        cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+    if (Cypress.$(nextPage).length > 0) {
+      cy.findTaskInAllThePages(businessKey, null, null).then(() => {
+        cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
+          cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+        });
       });
-    });
+    } else {
+      cy.findTaskInSinglePage(businessKey, null, null).then(() => {
+        cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
+          cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+        });
+      });
+    }
   });
 
   // COP-6905 Scenario-3
@@ -726,6 +756,13 @@ describe('Task Details of different tasks on task details Page', () => {
         expect(details).to.deep.equal(expectedDetails);
       });
     });
+
+    cy.visit('/tasks');
+
+    cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+      .click({ force: true });
+
+    cy.contains('Apply filters').click();
 
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
