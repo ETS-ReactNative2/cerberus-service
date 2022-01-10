@@ -355,6 +355,8 @@ describe('Task Details of different tasks on task details Page', () => {
 
     cy.contains('Apply filters').click();
 
+    cy.wait(2000);
+
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
 
@@ -477,6 +479,8 @@ describe('Task Details of different tasks on task details Page', () => {
       .click({ force: true });
 
     cy.contains('Apply filters').click();
+
+    cy.wait(2000);
 
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
@@ -613,6 +617,8 @@ describe('Task Details of different tasks on task details Page', () => {
 
     cy.contains('Apply filters').click();
 
+    cy.wait(2000);
+
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
 
@@ -681,19 +687,21 @@ describe('Task Details of different tasks on task details Page', () => {
 
     const nextPage = 'a[data-test="next"]';
     cy.visit('/tasks');
-    if (Cypress.$(nextPage).length > 0) {
-      cy.findTaskInAllThePages(businessKey, null, null).then(() => {
-        cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
-          cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+    cy.get('body').then(($el) => {
+      if ($el.find(nextPage).length > 0) {
+        cy.findTaskInAllThePages(businessKey, null, null).then(() => {
+          cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
+            cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+          });
         });
-      });
-    } else {
-      cy.findTaskInSinglePage(businessKey, null, null).then(() => {
-        cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
-          cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+      } else {
+        cy.findTaskInSinglePage(businessKey, null, null).then(() => {
+          cy.get('.task-list--item').contains(businessKey).closest('section').then((element) => {
+            cy.wrap(element).find('.govuk-tag--updatedTarget').should('not.exist');
+          });
         });
-      });
-    }
+      }
+    });
   });
 
   // COP-6905 Scenario-3
@@ -764,6 +772,8 @@ describe('Task Details of different tasks on task details Page', () => {
 
     cy.contains('Apply filters').click();
 
+    cy.wait(2000);
+
     cy.verifyTaskHasMultipleVersion(businessKey);
   });
 
@@ -817,6 +827,10 @@ describe('Task Details of different tasks on task details Page', () => {
     // COP-9051
     cy.getBusinessKey('-RORO-Accompanied-Freight-target-indicators-same-version_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
+      cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+        .click({ force: true });
+      cy.contains('Apply filters').click();
+      cy.wait(2000);
       cy.verifyTaskListInfo(`${businessKeys[0]}`).then((taskListDetails) => {
         expect('Risk Score: 50').to.deep.equal(taskListDetails.riskScore);
       });
@@ -827,6 +841,10 @@ describe('Task Details of different tasks on task details Page', () => {
     // COP-9051 The aggregated score is for the TIs in the latest version and does NOT include the score for TIs in previous 2 versions
     cy.getBusinessKey('-RORO-Accompanied-Freight-target-indicators-diff-version_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
+      cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+        .click({ force: true });
+      cy.contains('Apply filters').click();
+      cy.wait(2000);
       cy.verifyTaskListInfo(`${businessKeys[0]}`).then((taskListDetails) => {
         expect('Risk Score: 80').to.deep.equal(taskListDetails.riskScore);
       });
@@ -837,6 +855,10 @@ describe('Task Details of different tasks on task details Page', () => {
     // COP-9051
     cy.getBusinessKey('-Target-Indicators-Details').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
+      cy.get('.govuk-radios [value="roro-accompanied-freight"]')
+        .click({ force: true });
+      cy.contains('Apply filters').click();
+      cy.wait(2000);
       cy.verifyTaskListInfo(`${businessKeys[0]}`).then((taskListDetails) => {
         expect('Risk Score: 4140').to.deep.equal(taskListDetails.riskScore);
       });
@@ -847,6 +869,10 @@ describe('Task Details of different tasks on task details Page', () => {
     // COP-9051
     cy.getBusinessKey('-RORO-Unaccompanied-Freight-RoRo-UNACC-SBT_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
+      cy.get('.govuk-radios [value="roro-unaccompanied-freight"]')
+        .click({ force: true });
+      cy.contains('Apply filters').click();
+      cy.wait(2000);
       cy.verifyTaskListInfo(`${businessKeys[0]}`).then((taskListDetails) => {
         expect('Risk Score:').to.deep.equal(taskListDetails.riskScore);
       });
