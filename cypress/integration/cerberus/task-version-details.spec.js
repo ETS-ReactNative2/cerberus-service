@@ -84,7 +84,7 @@ describe('Task Details of different tasks on task details Page', () => {
         });
       });
 
-      cy.contains('h3', '2 selector matches').then((locator) => {
+      cy.contains('h2', '2 selector matches').then((locator) => {
         cy.getAllSelectorMatches(locator).then((actualSelectorMatches) => {
           expect(actualSelectorMatches).to.deep.equal(expectedDetails.selector_matches);
         });
@@ -469,7 +469,7 @@ describe('Task Details of different tasks on task details Page', () => {
     });
 
     cy.get('p.govuk-body').eq(0).invoke('text').then((assignee) => {
-      if (assignee.includes('Unassigned')) {
+      if (assignee.includes('Task not assigned')) {
         cy.get('button.link-button').should('be.visible').and('have.text', 'Claim').click();
       }
     });

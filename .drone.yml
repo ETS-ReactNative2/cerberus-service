@@ -167,7 +167,8 @@ steps:
       from_secret: QUAY_USERNAME
   when:
     branch:
-       - release-candidate
+       exclude:
+        - release-candidate
     event:
        - push
 
@@ -337,11 +338,11 @@ steps:
     TEST_ENV: sit
   when:
     branch:
+      exclude:
       - main
     event:
-      - promote
-    target:
-      - sit
+      - push
+
 
 - name: create_testjob_staging
   pull: always

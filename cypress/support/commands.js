@@ -826,7 +826,7 @@ Cypress.Commands.add('verifyTaskDetailAllSections', (expectedDetails, versionInR
   if (Object.prototype.hasOwnProperty.call(expectedDetails, 'selectorMatch')) {
     let regex = new RegExp('^[0-9]+ selector matches$', 'g');
     cy.get(`[id$=-content-${versionInRow}]`).within(() => {
-      cy.contains('h3', regex).then((locator) => {
+      cy.contains('h2', regex).then((locator) => {
         cy.getAllSelectorMatches(locator).then((actualSelectorMatches) => {
           expect(actualSelectorMatches).to.deep.equal(expectedDetails.selectorMatch);
         });

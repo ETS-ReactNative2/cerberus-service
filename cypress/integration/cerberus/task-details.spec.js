@@ -17,14 +17,7 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
     });
     cy.wait(2000);
     cy.get('.govuk-accordion__open-all').click();
-    let headers = [];
-    cy.get('.govuk-task-details-grid .title-heading').each((element) => {
-      cy.wrap(element).invoke('text').then((value) => {
-        headers.push(value);
-      });
-    }).then(() => {
-      expect(headers.some((x) => x.includes('selector matches'))).to.be.true;
-    });
+    cy.get('.selectors .govuk-heading-m').should('contain.text', 'selector matches');
   });
 
   it('Should add notes for the selected tasks', () => {
@@ -102,6 +95,8 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
     cy.wait('@submitNotes').then(({ response }) => {
       expect(response.statusCode).to.equal(200);
     });
+
+    cy.wait(2000);
 
     cy.getActivityLogs().then((activities) => {
       expect(activities).to.contain(notesText);
@@ -354,6 +349,8 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
         cy.visit(`/tasks/${businessKey}`);
       });
     });
+
+    cy.wait(2000);
 
     cy.getActivityLogs().then((activities) => {
       expect(activities).to.contain(expectedActivity);
