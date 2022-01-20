@@ -103,7 +103,6 @@ describe('Create task with different payload from Cerberus', () => {
         cy.navigation('Tasks');
         cy.get('.govuk-heading-xl').should('have.text', 'Task management');
         cy.checkTaskDisplayed(`${response.businessKey}`);
-        cy.contains('0 selector matches');
       });
     });
   });
