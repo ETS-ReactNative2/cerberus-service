@@ -983,7 +983,7 @@ describe('Task Details of different tasks on task details Page', () => {
     cy.getBusinessKey('-RORO-Accompanied-Freight-target-indicators-same-version_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
-          .click({ force: true });
+        .click({ force: true });
 
       cy.contains('Apply filters').click();
 
@@ -1000,7 +1000,7 @@ describe('Task Details of different tasks on task details Page', () => {
     cy.getBusinessKey('-RORO-Accompanied-Freight-target-indicators-diff-version_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
-          .click({ force: true });
+        .click({ force: true });
 
       cy.contains('Apply filters').click();
 
@@ -1016,7 +1016,7 @@ describe('Task Details of different tasks on task details Page', () => {
     cy.getBusinessKey('-Target-Indicators-Details').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
-          .click({ force: true });
+        .click({ force: true });
 
       cy.contains('Apply filters').click();
 
@@ -1032,7 +1032,7 @@ describe('Task Details of different tasks on task details Page', () => {
     cy.getBusinessKey('-RORO-Unaccompanied-Freight-RoRo-UNACC-SBT_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.get('.govuk-checkboxes [value="RORO_UNACCOMPANIED_FREIGHT"]')
-          .click({ force: true });
+        .click({ force: true });
 
       cy.contains('Apply filters').click();
 
