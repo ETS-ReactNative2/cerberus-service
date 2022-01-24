@@ -9,6 +9,44 @@
           "riskCreatedDate": "2021-05-18T08:55:31.472Z",
           "riskType": "Pre-Arrival",
           "matchedRules": [
+            {
+              "ruleId": 293,
+              "ruleName": "Paid by Cash",
+              "ruleType": "Pre-arrival",
+              "ruleVersion": 1,
+              "ruleDescription": "Test",
+              "securityLabels": [
+                "null",
+                "null",
+                "null",
+                "null",
+                "null",
+                "null"
+              ],
+              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
+              "rulePriority": "Tier 1",
+              "indicatorMatches": [
+                {
+                  "indicatorType": "BASIC",
+                  "index": 0,
+                  "values": [
+                    "true"
+                  ],
+                  "field": "cashPaid"
+                },
+                {
+                  "indicatorType": "BASIC",
+                  "index": 1,
+                  "values": [
+                    "RORO Unaccompanied Freight"
+                  ],
+                  "field": "mode"
+                }
+              ],
+              "abuseTypes": [
+                "National Security at the Border"
+              ]
+            }
           ],
           "matchedSelectors":[
             {
