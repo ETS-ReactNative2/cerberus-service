@@ -402,11 +402,10 @@ steps:
     TEST_ENV: staging
   when:
     branch:
-      - main
-    event:
-      - promote
-    target:
-      - staging
+      exclude:
+        - main
+      event:
+        - push
 
 - name: deploy_to_sit
   pull: if-not-exists

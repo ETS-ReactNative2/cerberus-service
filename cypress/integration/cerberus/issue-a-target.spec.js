@@ -520,6 +520,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.wait(2000);
       cy.get('.formio-component-threatIndicators').click();
+      cy.wait(3000);
       cy.get('.formio-component-threatIndicators')
         .within(() => {
           cy.get('.choices__list--dropdown .choices__item--selectable span').each((indicators) => {
