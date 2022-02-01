@@ -23,7 +23,7 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
     });
     cy.get('.selectors').within(() => {
       cy.get('.govuk-heading-m').should('contain.text', 'selector matches');
-    })
+    });
   });
 
   it('Should add notes for the selected tasks', () => {
