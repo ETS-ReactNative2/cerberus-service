@@ -27,7 +27,7 @@
       "Date of birth-dup": "",
       "Gender-dup": "",
       "Nationality-dup": "FR",
-      "Travel document type-dup": "OBJDOCPAS",
+      "Travel document type-dup": "Passport",
       "Travel document number-dup": "244746NL",
       "Travel document expiry-dup": "14/03/2021",
       "Date and time": "19 Nov 2021 at 09:15, a day before travel"
@@ -36,7 +36,7 @@
       "Travel document type": "",
       "Travel document number": "244999NL",
       "Date of birth": "23/09/1969",
-      "Date and time": "18 Nov 2021 at 09:15, 10 months after travel",
+      "Date and time": "18 Nov 2021 at 09:15, 10 months ago",
       "Check-in": "3 Aug 2020 at 12:05",
       "Model": ""
     }

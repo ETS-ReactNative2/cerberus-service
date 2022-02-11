@@ -12,7 +12,7 @@
     "Date of birth": "13/10/1991",
     "Gender": "M",
     "Nationality": "AUS",
-    "Travel document type": "OBJDOCPAS",
+    "Travel document type": "Passport",
     "Travel document number": "566746DL",
     "Travel document expiry": "29/10/2023"
   },
@@ -22,7 +22,7 @@
       "Date of birth": "22/11/1991",
       "Gender": "F",
       "Nationality": "DE",
-      "Travel document type": "OBJDOCPAS",
+      "Travel document type": "Passport",
       "Travel document number": "875786876",
       "Travel document expiry": "22/03/2022"
     },
@@ -31,7 +31,7 @@
       "Date of birth": "01/03/1989",
       "Gender": "M",
       "Nationality": "GB",
-      "Travel document type": "OBJDOCPAS",
+      "Travel document type": "Passport",
       "Travel document number": "244746NL",
       "Travel document expiry": "01/02/2021"
     }

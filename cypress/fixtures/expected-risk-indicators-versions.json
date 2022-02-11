@@ -1,82 +1,53 @@
 {
   "riskIndicatorsV-1" :[
     [
-        {
-          "Type": "CashPaid",
-          "Condition 1": "equal",
-          "Expression": "true"
-        },
-        {
-          "Type": "mode",
-          "Condition 1": "in",
-          "Expression": "RORO Accompanied Freight"
-        }
-    ],
-    [
       {
         "Type": "Vehicle Empty",
         "Condition 1": "equal",
         "Expression": "true"
-      },
-      {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
       }
     ],
     [
       {
-        "Type": "CashPaid",
+        "Type": "selectorsMatched",
         "Condition 1": "equal",
         "Expression": "true"
       },
       {
         "Type": "mode",
         "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
+        "Expression": "[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
       }
     ],
     [
       {
-        "Type": "CashPaid",
+        "Type": "cashPaid",
         "Condition 1": "equal",
         "Expression": "true"
       },
       {
         "Type": "mode",
         "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
+        "Expression": "[RORO Accompanied Freight, RORO Tourist]"
+      }
+    ],
+    [
+      {
+        "Type": "mode",
+        "Condition 1": "in",
+        "Expression": "[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
+      },
+      {
+        "Type": "checkInLeadTime",
+        "Condition 1": "between",
+        "Expression": "[1, 24]"
       }
     ]
-    ],
+  ],
   "riskIndicatorsV-2": [
     [
       {
-        "Type": "cashPaid",
-        "Condition 1": "equal",
-        "Expression": "true"
-      },
-      {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
-      },
-      {
-        "Type": "Vehicle Empty",
-        "Condition 1": "equal",
-        "Expression": "true"
-      }
-    ],
-    [
-      {
-        "Type": "Vehicle Empty",
-        "Condition 1": "equal",
-        "Expression": "true"
-      }
-    ],
-    [
-      {
-        "Type": "cashPaid",
+        "Type": "CashPaid",
         "Condition 1": "equal",
         "Expression": "true"
       },
@@ -88,7 +59,7 @@
     ],
     [
       {
-        "Type": "cashPaid",
+        "Type": "CashPaid",
         "Condition 1": "equal",
         "Expression": "true"
       },
@@ -102,14 +73,14 @@
   "riskIndicatorsV-3": [
     [
       {
-        "Type": "cashPaid",
+        "Type": "selectorsMatched",
         "Condition 1": "equal",
         "Expression": "true"
       },
       {
         "Type": "mode",
         "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
+        "Expression": "[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
       }
     ],
     [
@@ -121,7 +92,19 @@
       {
         "Type": "mode",
         "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight"
+        "Expression": "[RORO Accompanied Freight, RORO Tourist]"
+      }
+    ],
+    [
+      {
+        "Type": "mode",
+        "Condition 1": "in",
+        "Expression": "[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
+      },
+      {
+        "Type": "checkInLeadTime",
+        "Condition 1": "between",
+        "Expression": "[1, 24]"
       }
     ]
   ]

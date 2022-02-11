@@ -567,7 +567,7 @@ Cypress.Commands.add('deleteAutomationTestData', () => {
     url: `https://${cerberusServiceUrl}/camunda/engine-rest/history/process-instance`,
     headers: { Authorization: `Bearer ${token}` },
     body: {
-      'processInstanceBusinessKeyLike': `%AUTOverifyTaskDetailAllSectionsTEST-${dateNowFormatted}-%`,
+      'processInstanceBusinessKeyLike': `%AUTOTEST-${dateNowFormatted}-%`,
     },
   }).then((response) => {
     const processInstanceId = response.body.map((item) => item.id);
@@ -1212,7 +1212,7 @@ Cypress.Commands.add('verifyTasksSortedOnArrivalDateTime', () => {
   cy.get('.task-list--item-2 .content-line-two').each((item, index) => {
     let dates;
     cy.wrap(item).invoke('text').then((element) => {
-      if (element !== 'unknown') {
+      if (!element.includes('unknown')) {
         dates = element.split('-')[1];
         dates = dates.slice(5, dates.length).split('at')[0];
         const d = new Date(dates);

@@ -27,7 +27,7 @@
     "Date of birth": "27/04/1993",
     "Gender": "",
     "Nationality": "",
-    "Travel document type": "OBJDOCPAS",
+    "Travel document type": "Passport",
     "Travel document number": "AB2099357",
     "Travel document expiry": "20/03/2025"
   },
@@ -47,7 +47,7 @@
     "Payment method": "",
     "Ticket price": "",
     "Ticket type": "Single",
-    "Check-in": "4 Aug 2020 at 11:05"
+    "Check-in": "4 Aug 2020 at 11:05, 2 years before travel"
   },
   "TargetingIndicators": {
     "Total Score": "200",

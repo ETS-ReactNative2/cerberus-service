@@ -48,7 +48,7 @@ describe('Create task with different payload from Cerberus', () => {
     cy.createCerberusTask('RoRo-Tourist.json', 'TOURIST-WITH-PASSENGERS').then(() => {
       cy.wait(2000);
       cy.expandTaskDetails(0).then(() => {
-        cy.contains('h2', 'Rules matched').nextAll().within(() => {
+        cy.contains('h2', 'Rules matched').nextAll(() => {
           cy.getAllRuleMatches().then((actualRuleMatches) => {
             expect(actualRuleMatches['Abuse Type']).to.be.equal('Obscene Material');
           });
@@ -182,6 +182,13 @@ describe('Create task with different payload from Cerberus', () => {
       cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-${mode}-SINGLE-PASSENGER`).then((response) => {
         cy.wait(4000);
         cy.checkTaskDisplayed(`${response.businessKey}`);
+        cy.visit('/tasks');
+
+        cy.get('.govuk-checkboxes [value=RORO_TOURIST]')
+          .click({ force: true });
+
+        cy.contains('Apply filters').click();
+        cy.wait(2000);
         cy.verifyTouristTaskSummary(`${response.businessKey}`).then((taskDetails) => {
           expect(taskDetails).to.deep.equal(expectedDetails);
         });
@@ -205,6 +212,13 @@ describe('Create task with different payload from Cerberus', () => {
       expect(businessKeys.length).to.not.equal(0);
       cy.wait(4000);
       cy.checkTaskDisplayed(`${businessKeys[0]}`);
+      cy.visit('/tasks');
+
+      cy.get('.govuk-checkboxes [value=RORO_TOURIST]')
+        .click({ force: true });
+
+      cy.contains('Apply filters').click();
+      cy.wait(2000);
       cy.verifyTouristTaskSummary(`${businessKeys[0]}`).then((taskDetails) => {
         expect(taskDetails).to.deep.equal(expectedDetails);
       });

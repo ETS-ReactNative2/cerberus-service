@@ -9,21 +9,20 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
   });
 
   it('Should navigate to task details page', () => {
-    cy.get('h4.task-heading').eq(1).invoke('text').then((text) => {
-      cy.get('.govuk-task-list-card a').eq(1).click();
+    cy.get('h4.task-heading').eq(0).invoke('text').then((text) => {
+      cy.get('.govuk-task-list-card a').eq(0).click();
       cy.get('.govuk-caption-xl').invoke('text').then((taskTitle) => {
         expect(text).to.contain(taskTitle);
       });
     });
     cy.wait(2000);
-    cy.get('.govuk-accordion__open-all').click();
-    let headers = [];
-    cy.get('.govuk-task-details-grid .title-heading').each((element) => {
-      cy.wrap(element).invoke('text').then((value) => {
-        headers.push(value);
-      });
-    }).then(() => {
-      expect(headers.some((x) => x.includes('selector matches'))).to.be.true;
+    cy.get('.govuk-accordion__section-button').eq(0).invoke('attr', 'aria-expanded').then((value) => {
+      if (value !== true) {
+        cy.get('.govuk-accordion__section-button').eq(0).click();
+      }
+    });
+    cy.get('.selectors').within(() => {
+      cy.get('.govuk-heading-m').should('contain.text', 'selector matches');
     });
   });
 

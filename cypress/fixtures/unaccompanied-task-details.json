@@ -47,7 +47,7 @@
     "Payment method": "",
     "Ticket price": "",
     "Ticket type": "Single",
-    "Check-in": "4 Aug 2020 at 11:05"
+    "Check-in": "4 Aug 2020 at 11:05, 2 years before travel"
   },
   "vessel": {
     "name": "NORMANDIE",
@@ -69,8 +69,9 @@
       "Creator": "Joe Jones",
       "Entity": "",
       "Group number": "2020-6",
-      "Group reference": "Local ref",
+      "Group reference": "",
       "Inbound action": "Advise originator",
+      "Local reference": "Local ref",
       "Notes": "Supplemental notes",
       "Operator": "",
       "Outbound action": "Full attention",
@@ -83,27 +84,24 @@
       "Warnings": "Supplemental warnings"
     },
     {
-      "Attribute": "registrationNumber",
+      "Attribute": "mode",
       "Category": "C",
       "Creator": "user",
-      "Entity": "Trailer",
+      "Entity": "Message",
       "Group number": "2021-281",
-      "Group reference": "SR-222",
+      "Group reference": "",
       "Inbound action": "No action required",
+      "Local reference": "SR-222",
       "Notes": "notes",
-      "Operator": "equal",
+      "Operator": "in",
       "Outbound action": "No action required",
       "Point of contact": "ewfe",
       "Point of contact message": "effew",
       "Requesting officer": "efew",
       "Source reference": "ffew",
       "Threat type": "National Security at the Border",
-      "Value": "qwerty",
-      "Warnings": "fewfwe",
-      "Entity": "Message",
-      "Attribute": "mode",
-      "Operator": "in",
-      "Value": "RORO Unaccompanied Freight"
+      "Value": "RORO Unaccompanied Freight",
+      "Warnings": "fewfwe"
     }
   ]
 }

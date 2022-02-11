@@ -38,101 +38,98 @@
               ]
             },
             {
-              "ruleId": 346,
-              "ruleName": "Paid by cash1",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
+              "ruleId":535,
+              "ruleName":"Selector Matched Rule",
+              "ruleType":"Both",
+              "ruleVersion":1,
+              "ruleDescription":"Test",
+              "securityLabels":[
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 1",
+              "indicatorMatches":[
                 {
-                  "entity": "cashPaid",
-                  "descriptor": "cashPaid",
-                  "operator": "equal",
-                  "value": "true"
+                  "entity":"Message",
+                  "descriptor":"selectorsMatched",
+                  "operator":"equal",
+                  "value":"true"
                 },
                 {
-                  "entity": "Message",
-                  "descriptor": "mode",
-                  "operator": "in",
-                  "value": "RORO Accompanied Freight"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
                 }
               ],
-              "abuseTypes": [
-                "Class A Drugs"
+              "abuseTypes":[
+                "National Security at the Border"
               ]
             },
             {
-              "ruleId": 100,
-              "ruleName": "Selector matched",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
+              "ruleId":546,
+              "ruleName":"Paid by cash - perf rule",
+              "ruleType":"Pre-load",
+              "ruleVersion":1,
+              "ruleDescription":"Debitis esse volupt",
+              "securityLabels":[
+                "null",
+                "null",
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 2",
+              "indicatorMatches":[
                 {
-                  "entity": "cashPaid",
-                  "descriptor": "cashPaid",
-                  "operator": "equal",
-                  "value": "true"
+                  "entity":"Booking",
+                  "descriptor":"cashPaid",
+                  "operator":"equal",
+                  "value":"true"
                 },
                 {
-                  "entity": "Message",
-                  "descriptor": "mode",
-                  "operator": "in",
-                  "value": "RORO Accompanied Freight"
-                },
-                {
-                  "entity": "Vehicle",
-                  "descriptor": "Vehicle Empty",
-                  "operator": "equal",
-                  "value": "true"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[RORO Accompanied Freight, RORO Tourist]"
                 }
               ],
-              "abuseTypes": [
-                "Class A Drugs"
+              "abuseTypes":[
+                "Plant Health"
               ]
             },
             {
-              "ruleId": 10000,
-              "ruleName": "Task exists",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
+              "ruleId":556,
+              "ruleName":"Checkin lead time",
+              "ruleType":"Both",
+              "ruleVersion":1,
+              "ruleDescription":"Qui nesciunt suscip",
+              "securityLabels":[
+                "null",
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 4",
+              "indicatorMatches":[
                 {
-                  "entity": "cashPaid",
-                  "descriptor": "cashPaid",
-                  "operator": "equal",
-                  "value": "true"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
                 },
                 {
-                  "entity": "Message",
-                  "descriptor": "mode",
-                  "operator": "in",
-                  "value": "RORO Accompanied Freight"
+                  "entity":"Booking",
+                  "descriptor":"checkInLeadTime",
+                  "operator":"between",
+                  "value":"[1, 24]"
                 }
               ],
-              "abuseTypes": [
+              "abuseTypes":[
                 "Class A Drugs"
               ]
             }

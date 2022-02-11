@@ -285,11 +285,11 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
     cy.get('@taskName').then((text) => {
       cy.log('task to be searched', text);
       if (Cypress.$(nextPage).length > 0) {
-        cy.findTaskInAllThePages(text, null, { selector: 'selector auto testing', risk: 'Class B&C Drugs inc. Cannabis and 4 other rules' }).then((taskFound) => {
+        cy.findTaskInAllThePages(text, null, { selector: 'selector auto testing', risk: 'Class B&C Drugs inc. Cannabis and 2 other rules' }).then((taskFound) => {
           expect(taskFound).to.equal(true);
         });
       } else {
-        cy.findTaskInSinglePage(text, null, { selector: 'selector auto testing', risk: 'Class B&C Drugs inc. Cannabis and 4 other rules' }).then((taskFound) => {
+        cy.findTaskInSinglePage(text, null, { selector: 'selector auto testing', risk: 'Class B&C Drugs inc. Cannabis and 2 other rules' }).then((taskFound) => {
           expect(taskFound).to.equal(true);
         });
       }
@@ -380,18 +380,18 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
     cy.get('@taskName').then((text) => {
       cy.log('task to be searched', text);
       if (Cypress.$(nextPage).length > 0) {
-        cy.findTaskInAllThePages(text, null, { risk: 'National Security at the Border and 1 other rule' }).then((taskFound) => {
+        cy.findTaskInAllThePages(text, null, { risk: 'Class A Drugs and 2 other rules', riskTier: 'Tier 1' }).then((taskFound) => {
           expect(taskFound).to.equal(true);
         });
       } else {
-        cy.findTaskInSinglePage(text, null, { risk: 'National Security at the Border and 1 other rule' }).then((taskFound) => {
+        cy.findTaskInSinglePage(text, null, { risk: 'Class A Drugs and 2 other rules', riskTier: 'Tier 1' }).then((taskFound) => {
           expect(taskFound).to.equal(true);
         });
       }
     });
   });
 
-  it('Should check empty task list fallback message on task management page', () => {
+  it.skip('Should check empty task list fallback message on task management page', () => {
     cy.get('.govuk-checkboxes [value="RORO_UNACCOMPANIED_FREIGHT"]')
       .click({ force: true });
 

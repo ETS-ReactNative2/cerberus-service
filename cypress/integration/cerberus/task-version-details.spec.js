@@ -84,7 +84,7 @@ describe('Task Details of different tasks on task details Page', () => {
         });
       });
 
-      cy.contains('h3', '2 selector matches').then((locator) => {
+      cy.contains('h2', '2 selector matches').then((locator) => {
         cy.getAllSelectorMatches(locator).then((actualSelectorMatches) => {
           expect(actualSelectorMatches).to.deep.equal(expectedDetails.selector_matches);
         });
@@ -355,7 +355,7 @@ describe('Task Details of different tasks on task details Page', () => {
         });
       });
 
-      cy.contains('h2', 'Rules matched').nextAll().within(() => {
+      cy.contains('h2', 'Rules matched').nextAll(() => {
         cy.getAllRuleMatches().then((actualRuleMatches) => {
           expect(actualRuleMatches).to.deep.equal(expectedDetails.rules);
         });
@@ -1153,7 +1153,7 @@ describe('Task Details of different tasks on task details Page', () => {
 
   it('Should verify task Display highest threat level in task details', () => {
     const highestThreatLevel = [
-      'Category B',
+      'Category C',
       'Tier 1',
       'Category A',
     ];
