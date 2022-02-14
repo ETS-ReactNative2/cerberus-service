@@ -38,7 +38,7 @@
         "Date of birth": "03/10/1969",
         "Gender": "F",
         "Nationality": "",
-        "Travel document type": "OBJDOCPAS",
+        "Travel document type": "Passport",
         "Travel document number": "244746NL",
         "Travel document expiry": "14/03/2021"
       },
@@ -184,9 +184,9 @@
         "Date of birth": "27/10/1969",
         "Gender": "M",
         "Nationality": "GB",
-        "Travel document type": "",
-        "Travel document number": "",
-        "Travel document expiry": ""
+        "Travel document type": "Passport",
+        "Travel document number": "ST0394612",
+        "Travel document expiry": "01/02/2021"
       },
       "goods": {
         "Description": "Printed Paper",

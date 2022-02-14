@@ -109,7 +109,7 @@ describe('Create task with different payload from Cerberus', () => {
     cy.createCerberusTask('tsv-no-departure-location.json', 'TSV-NO-DEPARTURE-LOCATION');
   });
 
-  it('Should create a task with payload contains risks array as null', () => {
+  it('Should create a task with payload contains risks array and arrival timestamp as null', () => {
     cy.intercept('POST', '/camunda/task/*/claim').as('claim');
     cy.fixture('task-risks-null.json').then((task) => {
       let date = new Date();

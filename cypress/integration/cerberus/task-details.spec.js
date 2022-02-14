@@ -670,31 +670,6 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
     });
   });
 
-  it('Display Vehicle and Vessel Icons in Task List and Task Summary', () => {
-    let taskIcons = [
-      ['MULTIPLE-PASSENGERS', 'group', 'ship'],
-      ['TOURIST-NO-VEHICLE', 'group', 'ship'],
-      ['TOURIST-WITH-PASSENGERS', 'car', 'ship'],
-      ['RoRo-UNACC-RBT-SBT', 'hgv', 'ship'],
-      ['HAZARDOUS', 'van', 'ship'],
-      ['RoRo-UNACC-SBT', 'trailer', 'ship'],
-    ];
-    taskIcons.forEach((taskDetail) => {
-      cy.visit('/tasks');
-      cy.getBusinessKey(taskDetail[0]).then((businessKeys) => {
-        expect(businessKeys.length).to.not.equal(0);
-        cy.get('.govuk-task-list-card').contains(businessKeys[0]).parents('.card-container').within(() => {
-          cy.get('i').eq(0).invoke('attr', 'class').should('contain', taskDetail[1]);
-          cy.get('i').eq(1).invoke('attr', 'class').should('contain', taskDetail[2]);
-        });
-        cy.wait(5000);
-        cy.checkTaskDisplayed(businessKeys[0]);
-        cy.get('i').eq(0).invoke('attr', 'class').should('contain', taskDetail[1]);
-        cy.get('i').eq(1).invoke('attr', 'class').should('contain', taskDetail[2]);
-      });
-    });
-  });
-
   after(() => {
     cy.deleteAutomationTestData();
     cy.contains('Sign out').click();

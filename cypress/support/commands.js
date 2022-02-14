@@ -1314,3 +1314,28 @@ Cypress.Commands.add('verifyTouristTaskSummary', (businessKey) => {
     }
   });
 });
+
+Cypress.Commands.add('verifyIcons', (businessKey, vehicle, ship) => {
+  const nextPage = 'a[data-test="next"]';
+  cy.get('body').then(($el) => {
+    if ($el.find(nextPage).length > 0) {
+      cy.findTaskInAllThePages(businessKey, null, 'null').then(() => {
+        cy.get('.govuk-task-list-card').contains(businessKey).parents('.card-container').within(() => {
+          cy.get('i').eq(0).invoke('attr', 'class').should('contain', vehicle);
+          cy.get('i').eq(1).invoke('attr', 'class').should('contain', ship);
+        });
+      });
+    } else {
+      cy.findTaskInSinglePage(businessKey, null, 'null').then(() => {
+        cy.get('.govuk-task-list-card').contains(businessKey).parents('.card-container').within(() => {
+          cy.get('i').eq(0).invoke('attr', 'class').should('contain', vehicle);
+          cy.get('i').eq(1).invoke('attr', 'class').should('contain', ship);
+        });
+      });
+    }
+  });
+  cy.wait(2000);
+  cy.checkTaskDisplayed(businessKey);
+  cy.get('i').eq(0).invoke('attr', 'class').should('contain', vehicle);
+  cy.get('i').eq(1).invoke('attr', 'class').should('contain', ship);
+});
