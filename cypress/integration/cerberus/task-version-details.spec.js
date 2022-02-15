@@ -496,7 +496,7 @@ describe('Task Details of different tasks on task details Page', () => {
     const firstVersionIndex = 2;
     const versionDiff = [
       '32 changes in this version',
-      '6 changes in this version',
+      '9 changes in this version',
       'No changes in this version',
     ];
 

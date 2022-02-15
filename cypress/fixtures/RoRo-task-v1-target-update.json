@@ -10,173 +10,126 @@
           "riskType": "Pre-Arrival",
           "matchedRules": [
             {
-              "ruleId": 293,
-              "ruleName": "Paid by Cash",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Test",
-              "securityLabels": [
-                "null",
-                "null",
-                "null",
+              "ruleId":535,
+              "ruleName":"Selector Matched Rule",
+              "ruleType":"Both",
+              "ruleVersion":1,
+              "ruleDescription":"Test",
+              "securityLabels":[
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 1",
+              "indicatorMatches":[
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "cashPaid"
+                  "entity":"Message",
+                  "descriptor":"selectorsMatched",
+                  "operator":"equal",
+                  "value":"true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
                 }
               ],
-              "abuseTypes": [
+              "abuseTypes":[
                 "National Security at the Border"
               ]
             },
             {
-              "ruleId": 346,
-              "ruleName": "Paid by cash1",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
+              "ruleId":546,
+              "ruleName":"Paid by cash - perf rule",
+              "ruleType":"Pre-load",
+              "ruleVersion":1,
+              "ruleDescription":"Debitis esse volupt",
+              "securityLabels":[
+                "null",
+                "null",
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 2",
+              "indicatorMatches":[
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "cashPaid"
+                  "entity":"Booking",
+                  "descriptor":"cashPaid",
+                  "operator":"equal",
+                  "value":"true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[RORO Accompanied Freight, RORO Tourist]"
                 }
               ],
-              "abuseTypes": [
-                "Class A Drugs"
+              "abuseTypes":[
+                "Plant Health"
               ]
             },
             {
-              "ruleId": 100,
-              "ruleName": "Selector matched",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
+              "ruleId":556,
+              "ruleName":"Checkin lead time",
+              "ruleType":"Both",
+              "ruleVersion":1,
+              "ruleDescription":"Qui nesciunt suscip",
+              "securityLabels":[
                 "null",
-                "null",
-                "null"
-              ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
-                {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "selectorsMatched"
-                },
-                {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
-                }
-              ],
-              "abuseTypes": [
-                "Class A Drugs"
-              ]
-            },
-            {
-              "ruleId": 10000,
-              "ruleName": "Task exists",
-              "ruleType": "Pre-arrival",
-              "ruleVersion": 1,
-              "ruleDescription": "Paid by cash",
-              "securityLabels": [
                 "null",
                 "null",
                 "null"
               ],
-              "ruleMatchedOnDate": "2021-10-08T14:45:26Z",
-              "rulePriority": "Tier 1",
-              "indicatorMatches": [
+              "ruleMatchedOnDate":"2022-02-11T11:56:02Z",
+              "rulePriority":"Tier 4",
+              "indicatorMatches":[
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "taskExists"
+                  "entity":"Message",
+                  "descriptor":"mode",
+                  "operator":"in",
+                  "value":"[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity":"Booking",
+                  "descriptor":"checkInLeadTime",
+                  "operator":"between",
+                  "value":"[1, 24]"
                 }
               ],
-              "abuseTypes": [
+              "abuseTypes":[
                 "Class A Drugs"
               ]
             }
           ],
           "matchedSelectors":[
             {
-              "selectorId": 281,
-              "selectorReference": "2021-281",
-              "startDate": "2021-12-08T08:24:53.433Z",
+              "selectorId": 279,
+              "selectorReference": "2021-279",
+              "startDate": "2021-12-08T08:23:40.257Z",
               "endDate": "2022-01-19T23:59:59Z",
-              "category": "C",
-              "agencyCode": "Food Standards Agency (FSA)",
-              "intelligenceSource": "ffew",
-              "pointOfContact": "ewfe",
-              "pocMessage": "effew",
+              "category": "A",
+              "agencyCode": "Counter Terrorism Police (CTP)",
+              "intelligenceSource": "fefe",
+              "pointOfContact": "bfb",
+              "pocMessage": "fdvdfb",
               "priority": "Selector",
               "inboundActionCode": "No action required",
               "outboundActionCode": "No action required",
-              "threatType": "National Security at the Border",
+              "threatType": "Class A Drugs",
               "notes": "notes",
               "creator": "user",
-              "approver": "fewf",
+              "approver": "bfbfdbf",
               "securityLabels": [
                 "DATA_RISK_PREARRIVAL"
               ],
-              "localReference": "SR-222",
-              "warnings": "fewfwe",
-              "requestingOfficer": "efew",
+              "localReference": "SR-220",
+              "warnings": "bdfbdfbf",
+              "requestingOfficer": "fe",
               "requestingTeam": "MAH gateway",
               "indicatorMatches": [
                 {
@@ -195,44 +148,116 @@
               "selectorMatchedOnDate": "2021-12-08T09:19:33.097Z"
             },
             {
-              "selectorId": 280,
-              "selectorReference": "2021-280",
-              "startDate": "2021-12-08T08:24:23.953Z",
-              "endDate": "2022-01-19T23:59:59Z",
+              "selectorId": 278,
+              "selectorReference": "2021-278",
+              "startDate": "2021-12-02T16:48:51.203Z",
+              "endDate": "2022-01-13T23:59:59Z",
               "category": "B",
               "agencyCode": "Food Standards Agency (FSA)",
-              "intelligenceSource": "bfdbf",
-              "pointOfContact": "fbdbdf",
-              "pocMessage": "bffb",
+              "intelligenceSource": "yjjt",
+              "pointOfContact": "yjt",
+              "pocMessage": "jyjt",
               "priority": "Selector",
               "inboundActionCode": "No action required",
               "outboundActionCode": "No action required",
               "threatType": "National Security at the Border",
               "notes": "notes",
               "creator": "user",
-              "approver": "bfdbdf",
+              "approver": "jyjyt",
               "securityLabels": [
                 "DATA_RISK_PREARRIVAL"
               ],
-              "localReference": "SR-221",
-              "warnings": "bfbdf",
-              "requestingOfficer": "fdbdbf",
-              "requestingTeam": "BFNIH",
+              "localReference": "SR-219",
+              "warnings": "jtyj",
+              "requestingOfficer": "ytjtj",
+              "requestingTeam": "MAH gateway",
               "indicatorMatches": [
                 {
-                  "entity": "Trailer",
+                  "entity": "Vehicle",
                   "descriptor": "registrationNumber",
                   "operator": "equal",
-                  "value": "qwerty"
+                  "value": "ABC123"
                 },
                 {
                   "entity": "Message",
                   "descriptor": "mode",
                   "operator": "in",
-                  "value": "RORO Unaccompanied Freight"
+                  "value": "RORO Accompanied Freight,RORO Tourist,RORO Unaccompanied Freight"
                 }
               ],
               "selectorMatchedOnDate": "2021-12-08T09:19:33.097Z"
+            },
+            {
+              "selectorId":225,
+              "selectorReference":"2022-225",
+              "groupReference":"SR-215",
+              "groupVersionNumber":1,
+              "startDate":"2022-01-27T10:23:12.732Z",
+              "endDate":"2022-07-27T10:23:12.732Z",
+              "category":"null",
+              "agencyCode":"BF",
+              "intelligenceSource":"null",
+              "pointOfContact":"null",
+              "pocMessage":"342334",
+              "priority":"Selector",
+              "inboundActionCode":"null",
+              "outboundActionCode":"null",
+              "threatType":"Alcohol",
+              "notes":"null",
+              "creator":"paul.herring",
+              "approver":"null",
+              "securityLabels":[
+                "DATA_RISK_PREARRIVAL"
+              ],
+              "localReference":"null",
+              "warnings":"null",
+              "requestingOfficer":"null",
+              "requestingTeam":"null",
+              "indicatorMatches":[
+                {
+                  "entity":"vehicle",
+                  "descriptor":"registrationNumber",
+                  "operator":"equal",
+                  "value":"DK-45678"
+                }
+              ],
+              "selectorMatchedOnDate":"2022-02-08T16:18:43.998Z"
+            },
+            {
+              "selectorId":245,
+              "selectorReference":"2022-245",
+              "groupReference":"SR-227",
+              "groupVersionNumber":1,
+              "startDate":"2022-02-01T09:40:27.767Z",
+              "endDate":"2023-02-01T23:59:59Z",
+              "category":"C",
+              "agencyCode":"Borders and Aviation Security Unit Homeland Security Group (HSG)",
+              "intelligenceSource":"Qui adipisci consectetur ullam consequatur a aspernatur in",
+              "pointOfContact":"Dolores est qui laboriosam velit tenetur aut sit laborum Temporibus distinctio Aut hic non autem",
+              "pocMessage":"Blanditiis consectetur impedit omnis veniam veniam quibusdam ad eiusmod et consequatur fuga Fugiat nesciunt tenetur expedita aliquam",
+              "priority":"Selector",
+              "inboundActionCode":"Worthy of attention",
+              "outboundActionCode":"Monitor only",
+              "threatType":"Alcohol",
+              "notes":"notes",
+              "creator":"user",
+              "approver":"Ut adipisci culpa reiciendis dicta ullam vel duis laboriosam eiusmod",
+              "securityLabels":[
+                "DATA_RISK_PREARRIVAL"
+              ],
+              "localReference":"Quos ex reprehenderit dolor dolor at quia placeat fugiat qui voluptas non reiciendis voluptatum molestiae",
+              "warnings":"null",
+              "requestingOfficer":"Velit in sunt aliquip voluptate tempore consectetur",
+              "requestingTeam":"RoRo tourist",
+              "indicatorMatches":[
+                {
+                  "entity":"Person",
+                  "descriptor":"familyName",
+                  "operator":"equal",
+                  "value":"TURNER"
+                }
+              ],
+              "selectorMatchedOnDate":"2022-02-08T16:18:43.998Z"
             }
           ],
           "movement": {
@@ -370,7 +395,7 @@
                     "value": null,
                     "valueList": {
                       "val": [
-                        "Bailey|Ben|M|-66|GB|null|null|null|null|PERPAS|ROROXML:P=26ebab61705c7a2c44b5f47ff0b4a58c"
+                        "Bailey|Ben|M|4171|GB|OBJDOCPAS|ST0394612|18659|GB|PERPAS|ROROXML:P=79ebe735351bb31426478fa75c2d9f1f"
                       ]
                     },
                     "startTimestamp": null,

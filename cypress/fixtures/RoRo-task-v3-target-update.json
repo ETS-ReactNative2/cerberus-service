@@ -5,8 +5,8 @@
       "value": {
         "data": {
           "movementId": "ROROXML:CMID=5cab661edbc124203d7c148bec9eb092/608999ce5bb3091a6361e30e84c71948/2f9a5d455992ca1932cd818be3a74d5c",
-          "riskSubmissionId": 8550,
-          "riskCreatedDate": "2021-07-13T09:30:03.106021Z",
+          "riskSubmissionId": 8552,
+          "riskCreatedDate": "2021-07-13T09:31:38.250474Z",
           "riskType": "Pre-Arrival",
           "matchedRules": [
             {
@@ -27,20 +27,16 @@
               "rulePriority": "Tier 1",
               "indicatorMatches": [
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "cashPaid"
+                  "entity": "Vehicle",
+                  "descriptor": "Vehicle Empty",
+                  "operator": "equal",
+                  "value": "true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity": "Message",
+                  "descriptor": "mode",
+                  "operator": "in",
+                  "value": "RORO Accompanied Freight"
                 }
               ],
               "abuseTypes": [
@@ -62,20 +58,16 @@
               "rulePriority": "Tier 1",
               "indicatorMatches": [
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "cashPaid"
+                  "entity": "CashPaid",
+                  "descriptor": "CashPaid",
+                  "operator": "equal",
+                  "value": "true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity": "Message",
+                  "descriptor": "mode",
+                  "operator": "in",
+                  "value": "RORO Accompanied Freight"
                 }
               ],
               "abuseTypes": [
@@ -97,20 +89,16 @@
               "rulePriority": "Tier 1",
               "indicatorMatches": [
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "selectorsMatched"
+                  "entity": "CashPaid",
+                  "descriptor": "CashPaid",
+                  "operator": "equal",
+                  "value": "true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity": "Message",
+                  "descriptor": "mode",
+                  "operator": "in",
+                  "value": "RORO Accompanied Freight"
                 }
               ],
               "abuseTypes": [
@@ -132,20 +120,16 @@
               "rulePriority": "Tier 1",
               "indicatorMatches": [
                 {
-                  "indicatorType": "BASIC",
-                  "index": 0,
-                  "values": [
-                    "true"
-                  ],
-                  "field": "taskExists"
+                  "entity": "CashPaid",
+                  "descriptor": "CashPaid",
+                  "operator": "equal",
+                  "value": "true"
                 },
                 {
-                  "indicatorType": "BASIC",
-                  "index": 1,
-                  "values": [
-                    "RORO Unaccompanied Freight"
-                  ],
-                  "field": "mode"
+                  "entity": "Message",
+                  "descriptor": "mode",
+                  "operator": "in",
+                  "value": "RORO Accompanied Freight"
                 }
               ],
               "abuseTypes": [
@@ -188,12 +172,84 @@
                   ]
                 }
               ]
+            },
+            {
+              "selectorId":225,
+              "selectorReference":"2022-225",
+              "groupReference":"SR-215",
+              "groupVersionNumber":1,
+              "startDate":"2022-01-27T10:23:12.732Z",
+              "endDate":"2022-07-27T10:23:12.732Z",
+              "category":"null",
+              "agencyCode":"BF",
+              "intelligenceSource":"null",
+              "pointOfContact":"null",
+              "pocMessage":"342334",
+              "priority":"Selector",
+              "inboundActionCode":"null",
+              "outboundActionCode":"null",
+              "threatType":"Alcohol",
+              "notes":"null",
+              "creator":"paul.herring",
+              "approver":"null",
+              "securityLabels":[
+                "DATA_RISK_PREARRIVAL"
+              ],
+              "localReference":"null",
+              "warnings":"null",
+              "requestingOfficer":"null",
+              "requestingTeam":"null",
+              "indicatorMatches":[
+                {
+                  "entity":"vehicle",
+                  "descriptor":"registrationNumber",
+                  "operator":"equal",
+                  "value":"DK-45678"
+                }
+              ],
+              "selectorMatchedOnDate":"2022-02-08T16:18:43.998Z"
+            },
+            {
+              "selectorId":245,
+              "selectorReference":"2022-245",
+              "groupReference":"SR-227",
+              "groupVersionNumber":1,
+              "startDate":"2022-02-01T09:40:27.767Z",
+              "endDate":"2023-02-01T23:59:59Z",
+              "category":"C",
+              "agencyCode":"Borders and Aviation Security Unit Homeland Security Group (HSG)",
+              "intelligenceSource":"Qui adipisci consectetur ullam consequatur a aspernatur in",
+              "pointOfContact":"Dolores est qui laboriosam velit tenetur aut sit laborum Temporibus distinctio Aut hic non autem",
+              "pocMessage":"Blanditiis consectetur impedit omnis veniam veniam quibusdam ad eiusmod et consequatur fuga Fugiat nesciunt tenetur expedita aliquam",
+              "priority":"Selector",
+              "inboundActionCode":"Worthy of attention",
+              "outboundActionCode":"Monitor only",
+              "threatType":"Alcohol",
+              "notes":"notes",
+              "creator":"user",
+              "approver":"Ut adipisci culpa reiciendis dicta ullam vel duis laboriosam eiusmod",
+              "securityLabels":[
+                "DATA_RISK_PREARRIVAL"
+              ],
+              "localReference":"Quos ex reprehenderit dolor dolor at quia placeat fugiat qui voluptas non reiciendis voluptatum molestiae",
+              "warnings":"null",
+              "requestingOfficer":"Velit in sunt aliquip voluptate tempore consectetur",
+              "requestingTeam":"RoRo tourist",
+              "indicatorMatches":[
+                {
+                  "entity":"Person",
+                  "descriptor":"familyName",
+                  "operator":"equal",
+                  "value":"TURNER"
+                }
+              ],
+              "selectorMatchedOnDate":"2022-02-08T16:18:43.998Z"
             }
           ],
           "movement": {
             "cerberusMovementId": "ROROXML:CMID=5cab661edbc124203d7c148bec9eb092/608999ce5bb3091a6361e30e84c71948/2f9a5d455992ca1932cd818be3a74d5c",
             "firstCerberusTimestamp": 1626168602828,
-            "cerberusTimestamp": 1626168602828,
+            "cerberusTimestamp": 1626168698153,
             "latestMessageType": "ENRICH",
             "messageAnalysis": {
               "messageMatches": [
@@ -205,14 +261,14 @@
                 }
               ],
               "countOfSourceMessages": 1,
-              "countOfSnapshots": 0,
+              "countOfSnapshots": 1,
               "countOfNoStateChanges": 0,
               "countOfWashes": 0,
               "countOfEnrichments": 1,
               "firstRunlogTimestamp": 1626168602828,
               "lastRunlogTimestamp": 1626168602828,
-              "firstSnapshotTimestamp": 0,
-              "lastSnapshotTimestamp": 0,
+              "firstSnapshotTimestamp": 1626168698153,
+              "lastSnapshotTimestamp": 1626168698153,
               "firstNSCTimestamp": 0,
               "lastNSCTimestamp": 0,
               "firstWashTimestamp": 0,
@@ -276,14 +332,14 @@
                   "waybillNumber": "99990001",
                   "method": "method",
                   "adultCount": "001",
-                  "bookingDateTime": "2021-11-17T09:15:00",
+                  "bookingDateTime": "2021-11-19T09:15:00",
                   "descriptionOfCargo": "Printed Paper",
                   "childCount": "0",
                   "ticketType": "Return",
                   "driverCount": "001",
                   "reference": "357485636",
                   "oapCount": "0",
-                  "checkInDateTime": "2021-08-03T12:05:00",
+                  "checkInDateTime": "2020-08-03T12:05:00",
                   "hazardousCargo": "false",
                   "paymentMethod": "Cash",
                   "infantCount": "0"
@@ -325,7 +381,7 @@
                     "value": null,
                     "valueList": {
                       "val": [
-                        "Bailey|Ben|M|-66|GB|null|null|null|null|PERPAS|ROROXML:P=26ebab61705c7a2c44b5f47ff0b4a58c"
+                        "Bailey|Ken|F|-90||OBJDOCPAS|244746NL|18700||PERPAS|ROROXML:P=26ebab61705c7a2c44b5f47ff0b4a58c"
                       ]
                     },
                     "startTimestamp": null,
