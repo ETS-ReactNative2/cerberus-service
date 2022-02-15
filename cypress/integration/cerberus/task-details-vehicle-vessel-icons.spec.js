@@ -72,7 +72,7 @@ describe('Vehicle and Vessel Icons in Task List and Task Summary', () => {
     cy.contains('Apply filters').click();
 
     cy.wait(2000);
-    cy.getBusinessKey('HAZARDOUS').then((businessKeys) => {
+    cy.getBusinessKey('-HAZARDOUS_').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.verifyIcons(businessKeys[0], 'van', 'ship');
     });

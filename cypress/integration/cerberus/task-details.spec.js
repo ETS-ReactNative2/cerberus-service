@@ -220,6 +220,74 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
     cy.wait(2000);
   });
 
+  it('Should dismiss a task with a reason', () => {
+    const reasons = [
+      'Vessel arrived',
+      'False rule match',
+      'Resource redirected',
+      'Other',
+    ];
+
+    let businessKey;
+
+    const expectedActivity = 'Task dismissed, the reason is \'other reason for testing\'. Accompanying note: \'This is for testing\'';
+
+    cy.fixture('tasks.json').then((task) => {
+      let mode = task.variables.rbtPayload.value.data.movement.serviceMovement.movement.mode.replace(/ /g, '-');
+      task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
+      cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-${mode}-DISMISS`).then((taskResponse) => {
+        cy.wait(4000);
+        businessKey = taskResponse.businessKey;
+        cy.getTasksByBusinessKey(taskResponse.businessKey).then((tasks) => {
+          cy.navigateToTaskDetailsPage(tasks);
+        });
+
+        cy.intercept('POST', '/camunda/engine-rest/task/*/claim').as('claim');
+        cy.get('p.govuk-body').eq(0).should('contain.text', 'Task not assigned');
+
+        cy.get('button.link-button').should('be.visible').and('have.text', 'Claim').click();
+
+        cy.wait('@claim').then(({ response }) => {
+          expect(response.statusCode).to.equal(204);
+        });
+
+        cy.wait(2000);
+
+        cy.contains('Dismiss').click();
+
+        cy.get('.formio-component-reason .govuk-radios__label').each((reason, index) => {
+          cy.wrap(reason)
+              .should('contain.text', reasons[index]).and('be.visible');
+        });
+
+        cy.clickNext();
+
+        cy.verifyMandatoryErrorMessage('reason', 'You must indicate at least one reason for dismissing the task');
+
+        cy.selectRadioButton('reason', 'Other');
+
+        cy.typeValueInTextField('otherReason', 'other reason for testing');
+
+        cy.clickNext();
+
+        cy.waitForNoErrors();
+
+        cy.typeValueInTextArea('addANote', 'This is for testing');
+
+        cy.clickSubmit();
+
+        cy.verifySuccessfulSubmissionHeader('Task has been dismissed');
+
+        cy.visit(`/tasks/${businessKey}`);
+      });
+    });
+
+    cy.getActivityLogs().then((activities) => {
+      expect(activities).to.contain(expectedActivity);
+      expect(activities).not.to.contain('Property delete changed from false to true');
+    });
+  });
+
   it('Should complete assessment of a task with a reason as take no further action', () => {
     const reasons = [
       'Credibility checks carried out no target required',
@@ -313,74 +381,6 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
           expect(taskFound).to.equal(false);
         });
       }
-    });
-  });
-
-  it('Should dismiss a task with a reason', () => {
-    const reasons = [
-      'Vessel arrived',
-      'False rule match',
-      'Resource redirected',
-      'Other',
-    ];
-
-    let businessKey;
-
-    const expectedActivity = 'Task dismissed, the reason is \'other reason for testing\'. Accompanying note: \'This is for testing\'';
-
-    cy.fixture('tasks.json').then((task) => {
-      let mode = task.variables.rbtPayload.value.data.movement.serviceMovement.movement.mode.replace(/ /g, '-');
-      task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
-      cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-${mode}-DISMISS`).then((taskResponse) => {
-        cy.wait(4000);
-        businessKey = taskResponse.businessKey;
-        cy.getTasksByBusinessKey(taskResponse.businessKey).then((tasks) => {
-          cy.navigateToTaskDetailsPage(tasks);
-        });
-
-        cy.intercept('POST', '/camunda/engine-rest/task/*/claim').as('claim');
-        cy.get('p.govuk-body').eq(0).should('contain.text', 'Task not assigned');
-
-        cy.get('button.link-button').should('be.visible').and('have.text', 'Claim').click();
-
-        cy.wait('@claim').then(({ response }) => {
-          expect(response.statusCode).to.equal(204);
-        });
-
-        cy.wait(2000);
-
-        cy.contains('Dismiss').click();
-
-        cy.get('.formio-component-reason .govuk-radios__label').each((reason, index) => {
-          cy.wrap(reason)
-            .should('contain.text', reasons[index]).and('be.visible');
-        });
-
-        cy.clickNext();
-
-        cy.verifyMandatoryErrorMessage('reason', 'You must indicate at least one reason for dismissing the task');
-
-        cy.selectRadioButton('reason', 'Other');
-
-        cy.typeValueInTextField('otherReason', 'other reason for testing');
-
-        cy.clickNext();
-
-        cy.waitForNoErrors();
-
-        cy.typeValueInTextArea('addANote', 'This is for testing');
-
-        cy.clickSubmit();
-
-        cy.verifySuccessfulSubmissionHeader('Task has been dismissed');
-
-        cy.visit(`/tasks/${businessKey}`);
-      });
-    });
-
-    cy.getActivityLogs().then((activities) => {
-      expect(activities).to.contain(expectedActivity);
-      expect(activities).not.to.contain('Property delete changed from false to true');
     });
   });
 

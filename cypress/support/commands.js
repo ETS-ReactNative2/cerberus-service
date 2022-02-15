@@ -233,6 +233,11 @@ Cypress.Commands.add('verifyTaskManagementPage', (item, taskdetails) => {
             cy.wrap(item).find('.govuk-tag--riskTier').invoke('text').then((riskTier) => {
               expect(riskTier).to.equal(taskdetails.riskTier);
             });
+            if (taskdetails.riskTier === 'B') {
+              cy.wrap(item).find('.govuk-tag--riskTier').then((elem) => {
+                cy.wrap(elem).parent('.govuk-body').should('contains.text', 'SELECTOR');
+              });
+            }
           }
           if (taskdetails.selector != null) {
             cy.wrap(item).find('.task-highest-risk .govuk-body').invoke('text').then((selector) => {
