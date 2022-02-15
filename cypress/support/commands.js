@@ -741,15 +741,18 @@ function getTaskSummary(businessKey) {
 Cypress.Commands.add('verifyTaskListInfo', (businessKey) => {
   const nextPage = 'a[data-test="next"]';
   cy.visit('/tasks');
-  if (Cypress.$(nextPage).length > 0) {
-    cy.findTaskInAllThePages(businessKey, null, null).then(() => {
-      return getTaskSummary(businessKey);
-    });
-  } else {
-    cy.findTaskInSinglePage(businessKey, null, null).then(() => {
-      return getTaskSummary(businessKey);
-    });
-  }
+  cy.wait(2000);
+  cy.get('body').then(($el) => {
+    if ($el.find(nextPage).length > 0) {
+      cy.findTaskInAllThePages(businessKey, null, null).then(() => {
+        return getTaskSummary(businessKey);
+      });
+    } else {
+      cy.findTaskInSinglePage(businessKey, null, null).then(() => {
+        return getTaskSummary(businessKey);
+      });
+    }
+  });
 });
 
 Cypress.Commands.add('verifyTaskDetailSection', (expData, versionInRow, sectionname) => {

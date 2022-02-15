@@ -465,7 +465,7 @@
                 },
                 "type": "PERSON",
                 "person": {
-                  "type": "PERTDRIVER",
+                  "type": "PERFDRIVER",
                   "title": null,
                   "familyName": "Brownshoes",
                   "givenName": "Bobby",

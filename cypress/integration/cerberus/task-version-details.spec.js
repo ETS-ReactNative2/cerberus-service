@@ -578,7 +578,7 @@ describe('Task Details of different tasks on task details Page', () => {
       }
     });
 
-    for (let index = 1; index < 4; index += 1) {
+    for (let index = 3; index > 0; index -= 1) {
       cy.get(`[id$=-content-${index}]`).within(() => {
         cy.get('.govuk-rules-section').within(() => {
           cy.get('table').each((table, indexOfRisk) => {

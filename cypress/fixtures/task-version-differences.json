@@ -20,7 +20,7 @@
       "Date of birth": "03/10/1969",
       "Gender": "F",
       "Nationality": "",
-      "Travel document type": "OBJDOCPAS",
+      "Travel document type": "Passport",
       "Travel document number": "244746NL",
       "Travel document expiry": "14/03/2021",
       "Name-dup-1": "Bobby Brownshoes",
@@ -34,14 +34,14 @@
     },
     {
       "Travel document type": "",
-      "Travel document number": "244999NL",
+      "Travel document number": "",
       "Travel document expiry": "",
       "Date of birth": "23/09/1969",
       "Date and time": "18 Nov 2021 at 09:15, 10 months ago",
       "Check-in": "3 Aug 2020 at 12:05, 2 years before travel",
       "Model": "",
       "Travel document type-dup": "",
-      "Travel document number-dup": ""
+      "Travel document number-dup": "244999NL"
     }
   ]
 

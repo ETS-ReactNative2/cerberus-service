@@ -1,5 +1,43 @@
 {
-  "riskIndicatorsV-1" :[
+  "riskIndicatorsV-3": [
+    [
+      {
+        "Type": "selectorsMatched",
+        "Condition 1": "equal",
+        "Expression": "true"
+      },
+      {
+        "Type": "mode",
+        "Condition 1": "in",
+        "Expression": "[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
+      }
+    ],
+    [
+      {
+        "Type": "cashPaid",
+        "Condition 1": "equal",
+        "Expression": "true"
+      },
+      {
+        "Type": "mode",
+        "Condition 1": "in",
+        "Expression": "[RORO Accompanied Freight, RORO Tourist]"
+      }
+    ],
+    [
+      {
+        "Type": "mode",
+        "Condition 1": "in",
+        "Expression": "[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
+      },
+      {
+        "Type": "checkInLeadTime",
+        "Condition 1": "between",
+        "Expression": "[1, 24]"
+      }
+    ]
+  ],
+  "riskIndicatorsV-2" :[
     [
       {
         "Type": "Vehicle Empty",
@@ -44,7 +82,7 @@
       }
     ]
   ],
-  "riskIndicatorsV-2": [
+  "riskIndicatorsV-1": [
     [
       {
         "Type": "CashPaid",
@@ -67,44 +105,6 @@
         "Type": "mode",
         "Condition 1": "in",
         "Expression": "RORO Accompanied Freight"
-      }
-    ]
-  ],
-  "riskIndicatorsV-3": [
-    [
-      {
-        "Type": "selectorsMatched",
-        "Condition 1": "equal",
-        "Expression": "true"
-      },
-      {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "[Air Freight, Fast Parcels, RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
-      }
-    ],
-    [
-      {
-        "Type": "cashPaid",
-        "Condition 1": "equal",
-        "Expression": "true"
-      },
-      {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "[RORO Accompanied Freight, RORO Tourist]"
-      }
-    ],
-    [
-      {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "[RORO Accompanied Freight, RORO Tourist, RORO Unaccompanied Freight]"
-      },
-      {
-        "Type": "checkInLeadTime",
-        "Condition 1": "between",
-        "Expression": "[1, 24]"
       }
     ]
   ]

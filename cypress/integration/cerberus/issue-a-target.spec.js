@@ -39,7 +39,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
     cy.get('.govuk-caption-xl').invoke('text').as('taskName');
 
-    cy.selectDropDownValue('mode', 'RoRo Freight');
+    cy.verifySelectedDropdownValue('mode', 'RoRo Freight');
 
     cy.fixture('accompanied-task-2-passengers-details.json').then((targetData) => {
       let driverFirstName = targetData.driver.Name;
@@ -179,7 +179,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
     cy.get('.govuk-caption-xl').invoke('text').as('taskName');
 
-    cy.selectDropDownValue('mode', 'RoRo Freight');
+    cy.verifySelectedDropdownValue('mode', 'RoRo Freight');
 
     cy.fixture('unaccompanied-task-details.json').then((expectedDetails) => {
       cy.verifyElementText('regNumber', expectedDetails.vehicle['Trailer registration number']);
@@ -284,7 +284,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
     cy.get('.govuk-caption-xl').invoke('text').as('taskName');
 
-    cy.selectDropDownValue('mode', 'RoRo Freight');
+    cy.verifySelectedDropdownValue('mode', 'RoRo Freight');
 
     cy.fixture('unaccompanied-task-details.json').then((expectedDetails) => {
       cy.verifyElementText('regNumber', expectedDetails.vehicle['Trailer registration number']);
@@ -392,7 +392,7 @@ describe('Issue target from cerberus UI using target sheet information form', ()
     cy.get('.govuk-caption-xl').invoke('text').as('taskName');
 
     cy.fixture('target-information.json').then((targetInfo) => {
-      cy.selectDropDownValue('mode', 'RoRo Tourist');
+      cy.verifySelectedDropdownValue('mode', 'RoRo Tourist');
 
       cy.fixture('tourist-task-2-passengers-details.json').then((targetData) => {
         let driverFirstName = targetData.driver.Name;

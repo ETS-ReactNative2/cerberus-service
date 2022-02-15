@@ -276,12 +276,12 @@
       },
       "passengers": {
         "Name": "Ben Bailey",
-        "Date of birth": "27/10/1969",
+        "Date of birth": "03/06/1981",
         "Gender": "M",
         "Nationality": "GB",
-        "Travel document type": "",
-        "Travel document number": "",
-        "Travel document expiry": ""
+        "Travel document type": "Passport",
+        "Travel document number": "ST0394612",
+        "Travel document expiry": "01/02/2021"
       },
       "goods": {
         "Description": "Printed Paper",
