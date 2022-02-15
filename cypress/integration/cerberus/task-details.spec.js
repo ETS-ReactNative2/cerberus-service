@@ -257,7 +257,7 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
 
         cy.get('.formio-component-reason .govuk-radios__label').each((reason, index) => {
           cy.wrap(reason)
-              .should('contain.text', reasons[index]).and('be.visible');
+            .should('contain.text', reasons[index]).and('be.visible');
         });
 
         cy.clickNext();
