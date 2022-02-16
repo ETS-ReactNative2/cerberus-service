@@ -342,8 +342,6 @@ steps:
         - release-candidate
     event:
       - push
-    target:
-      - sit
 
 - name: create_testjob_staging
   pull: always
