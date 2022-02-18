@@ -3,7 +3,22 @@ describe('Vehicle and Vessel Icons in Task List and Task Summary', () => {
     cy.login(Cypress.env('userName'));
   });
 
-  it('Display Vehicle and Vessel Icons for mulitple passengers task', () => {
+  it('Display Vehicle and Vessel Icons for Accompanied-Freight task', () => {
+    cy.visit('/tasks');
+    cy.wait(3000);
+    cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
+        .click({ force: true });
+
+    cy.contains('Apply filters').click();
+
+    cy.wait(2000);
+    cy.getBusinessKey('RORO-Accompanied-Freight-HAZARDOUS').then((businessKeys) => {
+      expect(businessKeys.length).to.not.equal(0);
+      cy.verifyIcons(businessKeys[0], 'van', 'ship');
+    });
+  });
+
+  it('Display Vehicle and Vessel Icons for multiple passengers task', () => {
     cy.visit('/tasks');
     cy.wait(3000);
     cy.get('.govuk-checkboxes [value="RORO_TOURIST"]')
@@ -60,21 +75,6 @@ describe('Vehicle and Vessel Icons in Task List and Task Summary', () => {
     cy.getBusinessKey('RoRo-UNACC-RBT-SBT').then((businessKeys) => {
       expect(businessKeys.length).to.not.equal(0);
       cy.verifyIcons(businessKeys[0], 'hgv', 'ship');
-    });
-  });
-
-  it('Display Vehicle and Vessel Icons for Accompanied-Freight task', () => {
-    cy.visit('/tasks');
-    cy.wait(3000);
-    cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
-      .click({ force: true });
-
-    cy.contains('Apply filters').click();
-
-    cy.wait(2000);
-    cy.getBusinessKey('-HAZARDOUS_').then((businessKeys) => {
-      expect(businessKeys.length).to.not.equal(0);
-      cy.verifyIcons(businessKeys[0], 'van', 'ship');
     });
   });
 
