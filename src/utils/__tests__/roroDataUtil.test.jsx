@@ -2,6 +2,7 @@ import { modifyRoRoPassengersTaskList,
   hasCheckinDate,
   hasEta,
   hasCarrierCounts,
+  hasTaskVersionPassengers,
   extractTaskVersionsBookingField,
   modifyCountryCodeIfPresent } from '../roroDataUtil';
 
@@ -213,5 +214,149 @@ describe('RoRoData Util', () => {
     };
     const result = modifyCountryCodeIfPresent(bookingFieldMinified);
     expect(result.contents?.find(({ propName }) => propName === 'country').content).toBeFalsy();
+  });
+
+  it('should return false for absence of a valid passenger when not found', () => {
+    const given = {
+      fieldSetName: 'Passengers',
+      hasChildSet: true,
+      contents: [],
+      childSets: [
+        {
+          fieldSetName: '',
+          hasChildSet: false,
+          contents: [
+            {
+              fieldName: 'Name',
+              type: 'STRING',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'name',
+            },
+            {
+              fieldName: 'Date of birth',
+              type: 'SHORT_DATE',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'dob',
+            },
+            {
+              fieldName: 'Enrichment count',
+              type: 'HIDDEN',
+              content: '-/-/-',
+              versionLastUpdated: null,
+              propName: 'enrichmentCount',
+            },
+          ],
+          type: 'null',
+          propName: '',
+        },
+        {
+          fieldSetName: '',
+          hasChildSet: false,
+          contents: [
+            {
+              fieldName: 'Name',
+              type: 'STRING',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'name',
+            },
+            {
+              fieldName: 'Date of birth',
+              type: 'SHORT_DATE',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'dob',
+            },
+            {
+              fieldName: 'Enrichment count',
+              type: 'HIDDEN',
+              content: '-/-/1',
+              versionLastUpdated: null,
+              propName: 'enrichmentCount',
+            },
+          ],
+          type: 'null',
+          propName: '',
+        },
+      ],
+      type: 'STANDARD',
+      propName: 'passengers',
+    };
+    const outcome = hasTaskVersionPassengers(given);
+    expect(outcome).toEqual(false);
+  });
+
+  it('should return true for presence of a valid passenger when found', () => {
+    const given = {
+      fieldSetName: 'Passengers',
+      hasChildSet: true,
+      contents: [],
+      childSets: [
+        {
+          fieldSetName: '',
+          hasChildSet: false,
+          contents: [
+            {
+              fieldName: 'Name',
+              type: 'STRING',
+              content: 'JOE BLOGGS',
+              versionLastUpdated: null,
+              propName: 'name',
+            },
+            {
+              fieldName: 'Date of birth',
+              type: 'SHORT_DATE',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'dob',
+            },
+            {
+              fieldName: 'Enrichment count',
+              type: 'HIDDEN',
+              content: '-/-/-',
+              versionLastUpdated: null,
+              propName: 'enrichmentCount',
+            },
+          ],
+          type: 'null',
+          propName: '',
+        },
+        {
+          fieldSetName: '',
+          hasChildSet: false,
+          contents: [
+            {
+              fieldName: 'Name',
+              type: 'STRING',
+              content: 'JOHN CHEESE',
+              versionLastUpdated: null,
+              propName: 'name',
+            },
+            {
+              fieldName: 'Date of birth',
+              type: 'SHORT_DATE',
+              content: null,
+              versionLastUpdated: null,
+              propName: 'dob',
+            },
+            {
+              fieldName: 'Enrichment count',
+              type: 'HIDDEN',
+              content: '-/-/-',
+              versionLastUpdated: null,
+              propName: 'enrichmentCount',
+            },
+          ],
+          type: 'null',
+          propName: '',
+        },
+      ],
+      type: 'STANDARD',
+      propName: 'passengers',
+    };
+    const outcome = hasTaskVersionPassengers(given);
+    expect(outcome).toEqual(true);
   });
 });

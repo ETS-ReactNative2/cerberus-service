@@ -62,17 +62,15 @@ const hasDepartureTime = (departureTime) => {
   return departureTime !== null && departureTime !== undefined && departureTime !== '';
 };
 
+// Checks for presence of at least a valid passenger
 const hasTaskVersionPassengers = (passengers) => {
-  let hasValidPassengers = false;
   for (const passengerChildSets of passengers.childSets) {
-    for (const passenger of passengerChildSets.contents) {
-      if (passenger.content !== null) {
-        hasValidPassengers = true;
-        break;
-      }
+    const passengerName = passengerChildSets.contents.find(({ propName }) => propName === 'name').content;
+    if (passengerName) {
+      return true;
     }
   }
-  return hasValidPassengers;
+  return false;
 };
 
 const isTaskDetailsPassenger = (passenger) => {
