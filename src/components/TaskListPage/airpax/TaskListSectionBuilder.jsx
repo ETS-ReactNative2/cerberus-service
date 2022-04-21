@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import airlines from 'airline-codes';
+import ct from 'countries-and-timezones';
+import { ZonedDateTime } from '@js-joda/core';
 import dayjs from 'dayjs';
 import * as pluralise from 'pluralise';
 
@@ -11,6 +14,8 @@ import { MOVEMENT_DESCRIPTION_INDIVIDUAL, MOVEMENT_DESCRIPTION_GROUP, INDIVIDUAL
 import calculateTimeDifference from '../../../utils/calculateDatetimeDifference';
 import formatGender from '../../../utils/genderFormatter';
 import { formatField } from '../../../utils/formatField';
+
+require('@js-joda/timezone');
 
 const getFormattedDate = (date, dateFormat) => {
   return dayjs.utc(date).local().format(dateFormat);
@@ -408,17 +413,46 @@ const toDescriptionText = (targetTask) => {
   return descriptionText;
 };
 
+const isNegativeNumber = (number) => {
+  return number < 0;
+};
+
+const utcOffsetToInteger = (utcOffset) => {
+  const utcHour = utcOffset.split(':')[0];
+  return parseInt(utcHour, 10);
+};
+
+const toDepartureArrivalTimezone = (departureCountryIsoCode, arrivalCountryIsoCode) => {
+  const departureCountryMetadata = ct.getCountry(departureCountryIsoCode);
+  const arrivalCountryMetadata = ct.getCountry(arrivalCountryIsoCode);
+  return { departureCountryMetadata, arrivalCountryMetadata };
+};
+
 // TODO finish implementation
-const toZoneTimeDifference = (targetTask) => {
-  // eslint-disable-next-line no-unused-vars
-  const departureCountry = getDepartureCountry(targetTask);
-  // eslint-disable-next-line no-unused-vars
-  const departureTime = '';
-  // eslint-disable-next-line no-unused-vars
-  const arrivalCountry = getArrivalCountry(targetTask);
-  // eslint-disable-next-line no-unused-vars
-  const arrivalTime = '';
-  return 'TBC';
+const toTimeZoneDifference = (targetTask) => {
+  const journey = hasJourney(targetTask) && getJourney(targetTask);
+  const departureCountryIsoCode = getDepartureCountry(targetTask);
+  const arrivalCountryIsoCode = getArrivalCountry(targetTask);
+  const departureTime = getDepartureTime(journey);
+  const arrivalTime = getArrivalTime(journey);
+  // If any evaluates to be false, no calculations are performed
+  if (!departureCountryIsoCode || !arrivalCountryIsoCode || !departureTime || !arrivalTime) {
+    return '';
+  }
+  const { departureCountryMetadata, arrivalCountryMetadata } = toDepartureArrivalTimezone(departureCountryIsoCode,
+    arrivalCountryIsoCode);
+
+  const departureTimezone = departureCountryMetadata.timezones[0];
+  const arrivalTimezone = arrivalCountryMetadata.timezones[0];
+
+  const depertureZonedTime = ZonedDateTime.parse(`${departureTime}[${departureTimezone}]`);
+  const arrivalZonedTime = ZonedDateTime.parse(`${arrivalTime}[${arrivalTimezone}]`);
+
+  const departureUtcOffset = utcOffsetToInteger(depertureZonedTime._offset._id);
+  const arrivalUtcOffset = utcOffsetToInteger(arrivalZonedTime._offset._id);
+
+  const timeZoneDifference = departureUtcOffset - arrivalUtcOffset;
+  return !isNegativeNumber(timeZoneDifference) ? `(+${timeZoneDifference})` : `(-${timeZoneDifference})`;
 };
 
 const renderModeSection = (targetTask) => {
@@ -448,7 +482,7 @@ const renderVoyageSection = (targetTask) => {
       <p className="govuk-body-s content-line-two govuk-!-padding-right-2">
         <span className="govuk-!-font-weight-bold">{getFlightNumber(targetTask)}</span>
         <span className="dot" />
-        {`${toFormattedDepartureDateTime(targetTask)} (${toZoneTimeDifference(targetTask)})`}
+        {`${toFormattedDepartureDateTime(targetTask)} ${toTimeZoneDifference(targetTask)}`}
         <span className="dot" />
         <span className="govuk-!-font-weight-bold">{getDepartureLocation(targetTask)}</span> &#8594;
         <span className="govuk-!-font-weight-bold"> {getArrivalLocation(targetTask)}</span>

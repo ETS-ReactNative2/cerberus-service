@@ -1,8 +1,8 @@
 import { screen, render } from '@testing-library/react';
 
-import { buildSecondSection, buildThirdSection, buildFourthSection } from '../../../TaskListPage/airpax/TaskListSectionBuilder';
+import { buildSecondSection, buildThirdSection, buildFourthSection, toZoneTimeDifference } from '../../../TaskListPage/airpax/TaskListSectionBuilder';
 
-import targetTask from '../../../__fixtures__/targetListData';
+import { targetTask, targetTaskZoneTimeDiference } from '../../../__fixtures__/targetListData_AirPax';
 
 describe('TaskListSectionBuilder', () => {
   it('should render the second section', () => {

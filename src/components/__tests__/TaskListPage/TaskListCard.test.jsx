@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import TaskListCard from '../../TaskListPage/TaskListCard';
-import targetTask from '../../__fixtures__/targetListData';
+import { targetTask } from '../../__fixtures__/targetListData_AirPax';
 
 describe('TaskListCard', () => {
   it('should render the task list card for a target task', () => {
