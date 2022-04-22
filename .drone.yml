@@ -447,8 +447,6 @@ steps:
     CERBERUS_WORKFLOW_SERVICE_URL:
       from_secret: SIT_CERBERUS_SERVICE_URL
   when:
-    branch:
-    - release-candidate
     event:
     - promote
     target:
