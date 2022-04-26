@@ -225,9 +225,7 @@ describe('Create task with different payload from Cerberus', () => {
       'documentDetails': '566746DL',
       'bookedOn': 'Booked on 02/08/2020',
       'booked': 'Booked 5 days before travel',
-      'travellers': [
-        ' ',
-      ],
+      'travellers': [ 'None'],
     };
 
     cy.fixture('RoRo-Tourist-single-passengers.json').then((task) => {
