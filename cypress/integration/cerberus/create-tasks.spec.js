@@ -15,14 +15,17 @@ describe('Create task with different payload from Cerberus', () => {
     cy.fixture('task-vehicle-null.json').then((task) => {
       let date = new Date();
       let dateNowFormatted = Cypress.dayjs(date).format('DD-MM-YYYY');
+      let mode = task.variables.rbtPayload.value.data.movement.serviceMovement.movement.mode.replace(/ /g, '-');
       task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
-      cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-VEHICLE-NULL`).then((response) => {
+      cy.postTasks(task, `AUTOTEST-${dateNowFormatted}-${mode}-VEHICLE-NULL`).then((response) => {
         cy.wait(4000);
         let businessKey = response.businessKey;
         cy.checkTaskDisplayed(businessKey);
         cy.checkTaskSummary(null, Cypress.dayjs().format('D MMM YYYY [at] HH:mm'));
 
-        cy.get('.govuk-checkboxes [value="RORO_UNACCOMPANIED_FREIGHT"]')
+        cy.contains('Back to task list').click();
+
+        cy.get('.govuk-checkboxes [value="RORO_ACCOMPANIED_FREIGHT"]')
           .click({ force: true });
 
         cy.contains('Apply filters').click({ force: true });

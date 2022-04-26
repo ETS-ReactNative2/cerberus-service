@@ -224,6 +224,32 @@ Cypress.Commands.add('findTaskInAllThePages', (taskName, action, taskdetails) =>
   return findItem(taskName, action, taskdetails);
 });
 
+function getNumberOfTasksInPage() {
+  function getCount(count) {
+    cy.get('.pagination').invoke('attr', 'aria-label').as('pages');
+    cy.get('@pages').then((pages) => {
+      let page = pages.match(/\d/g).join('');
+      if (count >= page) {
+        return false;
+      }
+      if (count > 0) {
+        cy.contains('Next').click();
+        cy.wait(1000);
+      }
+      cy.get('.govuk-task-list-card').then((numberOfTasks) => {
+        expect(numberOfTasks.length).lte(100);
+      }).then(() => {
+        getCount(count += 1);
+      });
+    });
+  }
+  getCount(0);
+}
+
+Cypress.Commands.add('findNumberOfTasksInPage', () => {
+  return getNumberOfTasksInPage();
+});
+
 Cypress.Commands.add('verifyTaskManagementPage', (item, taskdetails) => {
   cy.wrap(item).parents('.govuk-tabs__panel').then((element) => {
     cy.wrap(element).invoke('attr', 'id').then((value) => {

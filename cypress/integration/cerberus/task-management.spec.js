@@ -66,14 +66,19 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
   });
 
   it('Should maintain the page links count', () => {
-    cy.get('.govuk-task-list-card').should('have.length.lessThan', MAX_TASK_PER_PAGE);
-
-    if (Cypress.$(nextPage).length > 0) {
-      cy.get('a[data-test="page-number"]').each((item) => {
-        cy.wrap(item).click();
-        cy.get('.govuk-task-list-card').should('have.length.lessThan', MAX_TASK_PER_PAGE);
-      });
-    }
+    cy.wait('@tasks').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.get('body').then(($el) => {
+      console.log($el.find(nextPage).length);
+      if ($el.find(nextPage).length > 0) {
+        cy.findNumberOfTasksInPage();
+      } else {
+        cy.get('.govuk-task-list-card').then((numberOfTasks) => {
+          expect(numberOfTasks.length).lte(MAX_TASK_PER_PAGE);
+        });
+      }
+    });
   });
 
   it.skip('Should verify refresh task list page', () => {

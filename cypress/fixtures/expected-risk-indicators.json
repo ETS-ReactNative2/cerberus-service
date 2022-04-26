@@ -2,26 +2,26 @@
   "riskIndicators" :[
     [
       {
-        "Type": "telephone",
-        "Condition 1": "equal",
-        "Expression": "01234 56723737"
+        "Entity type":"telephone",
+        "Attribute":"equal",
+        "Operator":"01234 56723737"
       },
       {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight,RORO Tourist,RORO Unaccompanied Freight"
+        "Entity type":"mode",
+        "Attribute":"in",
+        "Operator":"RORO Accompanied Freight,RORO Tourist,RORO Unaccompanied Freight"
       }
     ],
     [
       {
-        "Type": "Vehicle is empty",
-        "Condition 1": "equal",
-        "Expression": "true"
+        "Entity type": "Vehicle is empty",
+        "Attribute": "equal",
+        "Operator": "true"
       },
       {
-        "Type": "mode",
-        "Condition 1": "in",
-        "Expression": "RORO Accompanied Freight,RORO Tourist,RORO Unaccompanied Freight"
+        "Entity type": "mode",
+        "Attribute": "in",
+        "Operator": "RORO Accompanied Freight,RORO Tourist,RORO Unaccompanied Freight"
       }
     ]
   ]
