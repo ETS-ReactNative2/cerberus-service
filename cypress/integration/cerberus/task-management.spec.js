@@ -66,7 +66,9 @@ describe('Render tasks from Camunda and manage them on task management Page', ()
   });
 
   it('Should maintain the page links count', () => {
-    cy.wait(2000);
+    cy.wait('@tasks').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
     cy.get('body').then(($el) => {
       console.log($el.find(nextPage).length);
       if ($el.find(nextPage).length > 0) {
