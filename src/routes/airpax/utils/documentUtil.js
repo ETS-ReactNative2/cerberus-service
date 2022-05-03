@@ -1,4 +1,4 @@
-import { UNKNOWN_TEXT } from '../../../../constants';
+import { UNKNOWN_TEXT } from '../../../constants';
 
 // TODO finish implementation once data flows through
 const getDocumentCountryOfIssue = (document) => {
@@ -35,20 +35,19 @@ const getDocumentExpiry = (document) => {
   return `${expiryPrefix} ${UNKNOWN_TEXT}`;
 };
 
+const hasDocument = (person) => {
+  return !!person?.document;
+};
+
 const getDocument = (person) => {
-  if (person) {
+  if (person && hasDocument(person)) {
     return person.document;
   }
   return null;
 };
 
-const hasDocument = (person) => {
-  return !!person?.document;
-};
-
 const DocumentUtil = {
   get: getDocument,
-  has: hasDocument,
   docExpiry: getDocumentExpiry,
   docValidity: getDocumentValidity,
   docIdentification: getDocumentIdentification,
@@ -63,5 +62,4 @@ export {
   getDocumentValidity,
   getDocumentExpiry,
   getDocument,
-  hasDocument,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Tag } from '@ukhomeoffice/cop-react-components';
 
 import { UNKNOWN_TEXT, LONG_DATE_FORMAT, MOVEMENT_DESCRIPTION_INDIVIDUAL, MOVEMENT_DESCRIPTION_GROUP,
-  MOVEMENT_MODE_AIR_PASSENGER, MOVEMENT_MODE_AIR_CREW } from '../../../../constants';
+  MOVEMENT_MODE_AIR_PASSENGER, MOVEMENT_MODE_AIR_CREW } from '../../../constants';
 
 import { getFormattedDate } from './datetimeUtil';
 import { getTotalNumberOfPersons } from './personUtil';

@@ -1,0 +1,72 @@
+@import "~govuk-frontend/govuk/all";
+
+.hods-table {
+  margin-bottom: 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "GDS Transport";
+
+  thead {
+    display: none;
+
+    th {
+      font-size: 1.1875rem;
+      line-height: 1.5rem;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: table-header-group;
+    }
+  }
+
+  &__heading,
+  td {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+
+  &__action-header {
+    width: 1%;
+    white-space: nowrap;
+  }
+
+  tr {
+    border-bottom: solid 1px #b1b4b6;
+  }
+
+  td,
+  th {
+    padding: 10px 0;
+
+    @include govuk-media-query($from: tablet) {
+      padding: 15px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  td {
+    display: block;
+
+    @include govuk-media-query($from: tablet) {
+      font-size: 1.1875rem;
+      line-height: 1.5rem;
+      display: table-cell;
+    }
+  }
+
+  &__heading {
+    display: block;
+    font-weight: 700;
+
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
+}

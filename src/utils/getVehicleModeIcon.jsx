@@ -1,13 +1,11 @@
 import { RORO_ACCOMPANIED_ICON, RORO_NO_ICON, RORO_TOURIST, RORO_TOURIST_CAR_ICON, GROUP_ICON,
   INDIVIDUAL_ICON, RORO_UNACCOMPANIED_ICON, RORO_VAN_ICON } from '../constants';
 
+import { isSinglePassenger } from './roroDataUtil';
+
 const isVehiclePresent = (vehicle) => {
   return vehicle?.registrationNumber && vehicle?.registrationNumber !== ''
     && vehicle?.registrationNumber !== null && vehicle?.registrationNumber !== undefined;
-};
-
-const isIndividualPassenger = (passengers) => {
-  return passengers && passengers?.length === 1;
 };
 
 const hasTrailer = (vehicle) => {
@@ -20,7 +18,7 @@ const getTouristIcon = (vehicle, passengers) => {
     return RORO_TOURIST_CAR_ICON;
   }
 
-  if (!isVehiclePresent(vehicle) && isIndividualPassenger(passengers)) {
+  if (!isVehiclePresent(vehicle) && isSinglePassenger(passengers)) {
     return INDIVIDUAL_ICON;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { buildVoyageSection, buildMovementInfoSection, buildTargetIndicatorsSection } from './airpax/TaskListSectionBuilder';
+import { buildVoyageSection, buildMovementInfoSection, buildTargetIndicatorsSection } from './TaskListSectionBuilder';
 
 const TaskListCard = ({ targetTask, airlineCodes }) => {
   return (

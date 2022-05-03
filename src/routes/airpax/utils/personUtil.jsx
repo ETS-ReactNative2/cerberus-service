@@ -1,9 +1,9 @@
 import React from 'react';
 
-import formatGender from '../../../../utils/genderFormatter';
+import formatGender from '../../../utils/genderFormatter';
 import { getFormattedDate } from './datetimeUtil';
 
-import { SHORT_DATE_FORMAT_ALT, UNKNOWN_TEXT } from '../../../../constants';
+import { SHORT_DATE_FORMAT_ALT, UNKNOWN_TEXT } from '../../../constants';
 
 const getNationality = (person) => {
   if (!person?.nationality) {

@@ -155,7 +155,8 @@ const renderOccupants = (contents, fieldSetName, arrivalTime = undefined) => {
     ({ propName }) => propName === 'nationality',
   );
   const passportCountryOfIssue = contents.find(({ propName }) => propName === 'docCountryOfIssue')?.content;
-  const isValidCountryCode = passportCountryOfIssue && passportCountryOfIssue.length === 2;
+  const isValidCountryCode = passportCountryOfIssue && passportCountryOfIssue.length === 2
+  && lookup.byIso(passportCountryOfIssue) !== null;
   const passportNumber = contents.find(
     ({ propName }) => propName === 'docNumber',
   );

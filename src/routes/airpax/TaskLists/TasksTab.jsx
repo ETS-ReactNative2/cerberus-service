@@ -14,7 +14,7 @@ import config from '../../../config';
 // Components/Pages
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import Pagination from '../../../components/Pagination';
-import TaskListCard from '../../../components/TaskListPage/TaskListCard';
+import TaskListCard from './TaskListCard';
 
 const TasksTab = ({ taskStatus, filtersToApply, targetTaskCount = 0 }) => {
   dayjs.extend(relativeTime);

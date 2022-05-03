@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer';
 
-import { MovementUtil } from '../airpax/utils';
-import { LONDON_TIMEZONE, UNKNOWN_TEXT } from '../../../constants';
+import { MovementUtil } from '../../utils';
+import { LONDON_TIMEZONE, UNKNOWN_TEXT } from '../../../../constants';
 
-import config from '../../../config';
+import config from '../../../../config';
 
 describe('MovementUtil', () => {
   beforeEach(() => {

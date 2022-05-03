@@ -1,5 +1,5 @@
-import { DocumentUtil } from '../airpax/utils';
-import { UNKNOWN_TEXT } from '../../../constants';
+import { DocumentUtil } from '../../utils';
+import { UNKNOWN_TEXT } from '../../../../constants';
 
 describe('DocumentUtil', () => {
   it('should get a document if present', () => {
@@ -9,15 +9,6 @@ describe('DocumentUtil', () => {
 
     const output = DocumentUtil.get(person);
     expect(output).toBeNull();
-  });
-
-  it('should verify absence of a document', () => {
-    const person = {
-      document: null,
-    };
-
-    const output = DocumentUtil.has(person);
-    expect(output).toBeFalsy();
   });
 
   it('should shown unknown expiry when document expiry date is not present', () => {

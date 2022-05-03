@@ -1,7 +1,7 @@
 import { getFormattedDate, toDateTimeList } from './datetimeUtil';
-import calculateTimeDifference from '../../../../utils/calculateDatetimeDifference';
+import calculateTimeDifference from '../../../utils/calculateDatetimeDifference';
 
-import { UNKNOWN_TEXT, SHORT_DATE_FORMAT_ALT, STANDARD_HOUR_MINUTE_FORMAT } from '../../../../constants';
+import { UNKNOWN_TEXT, SHORT_DATE_FORMAT_ALT, STANDARD_HOUR_MINUTE_FORMAT } from '../../../constants';
 
 const toBookingDateText = (booking) => {
   if (!booking?.bookedAt) {

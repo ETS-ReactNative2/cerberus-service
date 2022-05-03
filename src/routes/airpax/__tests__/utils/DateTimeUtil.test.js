@@ -1,7 +1,7 @@
-import { DateTimeUtil } from '../airpax/utils';
-import { LONDON_TIMEZONE, LONG_DATE_FORMAT } from '../../../constants';
+import { DateTimeUtil } from '../../utils';
+import { LONDON_TIMEZONE, LONG_DATE_FORMAT } from '../../../../constants';
 
-import config from '../../../config';
+import config from '../../../../config';
 
 describe('DateTimeUtil', () => {
   beforeEach(() => {

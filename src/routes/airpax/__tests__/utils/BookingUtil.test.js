@@ -1,7 +1,7 @@
-import { BookingUtil } from '../airpax/utils';
-import { LONDON_TIMEZONE, UNKNOWN_TEXT } from '../../../constants';
+import { BookingUtil } from '../../utils';
+import { LONDON_TIMEZONE, UNKNOWN_TEXT } from '../../../../constants';
 
-import config from '../../../config';
+import config from '../../../../config';
 
 describe('BookingUtil', () => {
   beforeEach(() => {

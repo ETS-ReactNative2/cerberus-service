@@ -1,5 +1,5 @@
-import { BaggageUtil } from '../airpax/utils';
-import { UNKNOWN_TEXT } from '../../../constants';
+import { BaggageUtil } from '../../utils';
+import { UNKNOWN_TEXT } from '../../../../constants';
 
 describe('BaggageUtil', () => {
   it('should return a baggage object', () => {

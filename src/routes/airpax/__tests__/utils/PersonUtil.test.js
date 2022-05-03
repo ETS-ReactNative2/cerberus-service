@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer';
 
-import { UNKNOWN_TEXT } from '../../../constants';
-import { PersonUtil } from '../airpax/utils';
+import { UNKNOWN_TEXT } from '../../../../constants';
+import { PersonUtil } from '../../utils';
 
 describe('PersonUtil', () => {
   const person = {

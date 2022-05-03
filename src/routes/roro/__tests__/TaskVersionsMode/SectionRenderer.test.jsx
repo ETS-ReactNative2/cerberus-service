@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { screen, render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { RORO_ACCOMPANIED_FREIGHT } from '../../../../constants';
 import {
@@ -1050,6 +1051,80 @@ describe('SectionRenderer', () => {
 
       const tree = renderer.create(renderOccupantsSection(input, 'any-icon', bookingDate)).toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    // TODO
+    it('should render occupants when passport country of issue code is invalid', () => {
+      const input = {
+        fieldSetName: 'Passengers',
+        childSets: [
+          {
+            contents: [
+              {
+                fieldName: 'Name',
+                type: 'STRING',
+                content: 'MR FIRST PASSENGER',
+                versionLastUpdated: null,
+                propName: 'name',
+              },
+              {
+                fieldName: 'Travel document country of issue',
+                type: 'STRING',
+                content: 'UN',
+                versionLastUpdated: null,
+                propName: 'docCountryOfIssue',
+              },
+            ],
+          },
+          {
+            contents: [
+              {
+                fieldName: 'Name',
+                type: 'STRING',
+                content: 'MRS SECOND PASSENGER',
+                versionLastUpdated: null,
+                propName: 'name',
+              },
+              {
+                fieldName: 'Travel document country of issue',
+                type: 'STRING',
+                content: 'UN',
+                versionLastUpdated: null,
+                propName: 'docCountryOfIssue',
+              },
+            ],
+          },
+          {
+            contents: [
+              {
+                fieldName: 'Name',
+                type: 'STRING',
+                content: 'MR OTHER PASSENGER',
+                versionLastUpdated: null,
+                propName: 'name',
+              },
+              {
+                fieldName: 'Entity Search URL',
+                type: 'HIDDEN',
+                content: 'http://localhost:4020/search?term=56565656&type=PERSON&fields=["id"]',
+                versionLastUpdated: null,
+                propName: 'entitySearchUrl',
+              },
+            ],
+          },
+        ],
+      };
+
+      const bookingDate = {
+        fieldName: 'Date and time',
+        type: 'BOOKING_DATETIME',
+        content: null,
+        versionLastUpdated: null,
+        propName: 'dateBooked',
+      };
+
+      render(renderOccupantsSection(input, 'any-icon', bookingDate));
+      expect(screen.queryAllByText('Unknown (Unknown)')).toHaveLength(2);
     });
   });
 

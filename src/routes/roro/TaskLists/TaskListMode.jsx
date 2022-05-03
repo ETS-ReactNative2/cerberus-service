@@ -7,7 +7,7 @@ import * as constants from '../../../constants';
 // Utils
 import calculateTimeDifference from '../../../utils/calculateDatetimeDifference';
 import formatGender from '../../../utils/genderFormatter';
-import { hasVehicleMake, hasVehicleModel, hasVehicle, hasTrailer } from '../../../utils/roroDataUtil';
+import { hasVehicleMake, hasVehicleModel, hasVehicle, hasTrailer, filterKnownPassengers } from '../../../utils/roroDataUtil';
 
 const getMovementModeTypeText = (movementModeIcon) => {
   switch (movementModeIcon) {
@@ -24,6 +24,7 @@ const getMovementModeTypeText = (movementModeIcon) => {
 };
 
 const getMovementModeTypeContent = (roroData, movementModeIcon, passengers) => {
+  const actualPassengers = filterKnownPassengers(passengers);
   switch (movementModeIcon) {
     case constants.RORO_TOURIST_CAR_ICON: {
       return !roroData.vehicle.registrationNumber ? '\xa0' : roroData.vehicle.registrationNumber.toUpperCase();
@@ -32,7 +33,7 @@ const getMovementModeTypeContent = (roroData, movementModeIcon, passengers) => {
       return '1 foot passenger';
     }
     default: {
-      return passengers !== undefined ? `${passengers.length} foot passengers` : '0';
+      return actualPassengers ? `${actualPassengers.length} foot passengers` : '0';
     }
   }
 };

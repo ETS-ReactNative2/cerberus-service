@@ -1,5 +1,5 @@
-import { UNKNOWN_TEXT } from '../../../../constants';
-import { formatField } from '../../../../utils/formatField';
+import { UNKNOWN_TEXT } from '../../../constants';
+import { formatField } from '../../../utils/formatField';
 
 const getBaggageWeight = (baggage) => {
   if (!baggage) {

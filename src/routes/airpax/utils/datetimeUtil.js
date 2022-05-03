@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import config from '../../../../config';
+import config from '../../../config';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
