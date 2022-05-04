@@ -167,7 +167,7 @@ steps:
       from_secret: QUAY_USERNAME
   when:
     branch:
-      exclue:
+      exclude:
        - release-candidate
     event:
        - push
