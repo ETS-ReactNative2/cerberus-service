@@ -693,6 +693,7 @@ describe('Task Details of different tasks on task details Page', () => {
         cy.get('.govuk-rules-section').within(() => {
           cy.get('table').each((table, indexOfRisk) => {
             cy.wrap(table).getTable().then((tableData) => {
+              console.log('risk indicator matches', tableData);
               cy.get('@expectedRiskIndicatorMatches').then((expectedData) => {
                 expectedData[`riskIndicatorsV-${index}`][indexOfRisk].forEach((taskItem) => expect(tableData).to.deep.include(taskItem));
               });
@@ -769,7 +770,7 @@ describe('Task Details of different tasks on task details Page', () => {
     const businessKey = `AUTOTEST-${dateNowFormatted}-RORO-Accompanied-Freight-passenger-info_${Math.floor((Math.random() * 1000000) + 1)}:CMID=TEST`;
     let departureDateTime;
     const dateFormat = 'D MMM YYYY [at] HH:mm';
-    let arrivalDataTime = Cypress.dayjs().subtract(3, 'year').format(dateFormat);
+    let arrivalDataTime = Cypress.dayjs().subtract(3, 'year').utc().format(dateFormat);
 
     let arrivalTime = Cypress.dayjs().subtract(3, 'year').valueOf();
     cy.fixture('/task-version-passenger/RoRo-task-v1.json').then((task) => {
@@ -804,9 +805,9 @@ describe('Task Details of different tasks on task details Page', () => {
       task.variables.rbtPayload.value.data.movement.voyage.voyage.actualArrivalTimestamp = arrivalTime;
       departureDateTime = Cypress.dayjs().add(13, 'day').valueOf();
       task.variables.rbtPayload.value.data.movement.voyage.voyage.scheduledDepartureTimestamp = departureDateTime;
-      departureDateTime = Cypress.dayjs(departureDateTime).format(dateFormat);
+      departureDateTime = Cypress.dayjs(departureDateTime).utc().format(dateFormat);
       task.variables.rbtPayload.value.data.movement.voyage.voyage.actualDepartureTimestamp = Cypress.dayjs().add(13, 'day').valueOf();
-      task.variables.rbtPayload.value.data.movement.serviceMovement.attributes.attrs.bookingDateTime = Cypress.dayjs().format('YYYY-MM-DDThh:mm:ss');
+      task.variables.rbtPayload.value.data.movement.serviceMovement.attributes.attrs.bookingDateTime = Cypress.dayjs().utc().format('YYYY-MM-DDThh:mm:ss');
       task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
       cy.postTasks(task, null).then((response) => {
         cy.wait(15000);
@@ -1100,10 +1101,16 @@ describe('Task Details of different tasks on task details Page', () => {
   });
 
   it('Should verify task details of RoRo-Tourist with Vehicle', () => {
-    cy.getBusinessKey('-TOURIST-RBT-SBT_').then((businessKeys) => {
-      expect(businessKeys.length).to.not.equal(0);
-      cy.wait(4000);
-      cy.checkTaskDisplayed(`${businessKeys[0]}`);
+    cy.fixture('RoRo-Tourist-RBT-SBT.json').then((task) => {
+      let date = Cypress.dayjs().format('DD-MM-YYYY');
+      task.variables.rbtPayload.value.data.movement.voyage.voyage.actualArrivalTimestamp = Cypress.dayjs().subtract(3, 'year').valueOf();
+      let mode = task.variables.rbtPayload.value.data.movement.serviceMovement.movement.mode.replace(/ /g, '-');
+      task.variables.rbtPayload.value = JSON.stringify(task.variables.rbtPayload.value);
+
+      cy.postTasks(task, `AUTOTEST-${date}-${mode}-TOURIST-RBT-SBT`).then((response) => {
+        cy.wait(8000);
+        cy.checkTaskDisplayed(`${response.businessKey}`);
+      });
     });
 
     cy.fixture('tourist-task-with-vehicle-details.json').then((expectedDetails) => {
@@ -1177,12 +1184,6 @@ describe('Task Details of different tasks on task details Page', () => {
       cy.contains('h3', 'Primary Traveller').nextAll().within((elements) => {
         cy.getVehicleDetails(elements).then((details) => {
           expect(details).to.deep.equal(expectedDetails['primary traveller']);
-        });
-      });
-
-      cy.contains('h3', 'Document').next().within((elements) => {
-        cy.getDocumentDetails(elements).then((details) => {
-          expect(details).to.deep.equal(expectedDetails.document);
         });
       });
 
@@ -1351,7 +1352,7 @@ describe('Task Details of different tasks on task details Page', () => {
       cy.postTasks(reListTask, null).then((taskResponse) => {
         cy.wait(10000);
         cy.checkTaskDisplayed(`${taskResponse.businessKey}`);
-        updateDateTime = Cypress.dayjs().format(dateFormat);
+        updateDateTime = Cypress.dayjs().utc().format(dateFormat);
         cy.get('.task-versions--left .govuk-caption-m').eq(0).should('have.text', updateDateTime);
       });
     });
@@ -1377,7 +1378,7 @@ describe('Task Details of different tasks on task details Page', () => {
 
     cy.wait(120000);
     let updateDateTime;
-    updateDateTime = Cypress.dayjs().format(dateFormat);
+    updateDateTime = Cypress.dayjs().utc().format(dateFormat);
     cy.fixture('RoRo-Tourist-2-passengers.json').then((reListTask) => {
       date.setDate(date.getDate() + 8);
       reListTask.businessKey = businessKey;

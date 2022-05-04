@@ -4,9 +4,9 @@
     "voyage": "Brittany Ferries voyage of BARFLEUR",
     "arrival": "arrival 2 years ago",
     "departurePort": "unknown",
-    "departureDateTime": "4 Aug 2020 at 14:05",
+    "departureDateTime": "4 Aug 2020 at 13:05",
     "arrivalPort": "unknown",
-    "arrivalDateTime": "4 Aug 2020 at 14:35",
+    "arrivalDateTime": "4 Aug 2020 at 13:35",
     "driverEnrichmentCount": "(-/-/-)",
     "driverFirstName": "? trips",
     "vehicleEnrichmentCount": "(4/1/0)",
@@ -24,8 +24,8 @@
   "taskSummary": {
     "vehicle": "",
     "Ferry": "Brittany Ferries voyage of BARFLEUR",
-    "Departure": "4 Aug 2020 at 14:05",
-    "Arrival": "4 Aug 2020 at 14:35",
+    "Departure": "4 Aug 2020 at 13:05",
+    "Arrival": "4 Aug 2020 at 13:35",
     "Account": "Arrival 2 years ago"
   }
 }

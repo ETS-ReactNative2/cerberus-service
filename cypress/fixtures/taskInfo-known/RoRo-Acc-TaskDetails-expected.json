@@ -4,9 +4,9 @@
     "voyage": "Brittany Ferries voyage of BARFLEUR",
     "arrival": "arrival 2 years ago",
     "departurePort": "DOV",
-    "departureDateTime": "4 Aug 2020 at 14:05",
+    "departureDateTime": "4 Aug 2020 at 13:05",
     "arrivalPort": "CAL",
-    "arrivalDateTime": "4 Aug 2020 at 14:35",
+    "arrivalDateTime": "4 Aug 2020 at 13:35",
     "driverEnrichmentCount": "(4/1/0)",
     "driverFirstName": "Ben",
     "driverLastName": "Bailey",
@@ -31,8 +31,8 @@
   "taskSummary": {
     "vehicle": "Vehicle with TrailerCOP1 with NL-234-392 driven by Ben Bailey",
     "Ferry": "Brittany Ferries voyage of BARFLEUR",
-    "Departure": "4 Aug 2020 at 14:05   DOV",
-    "Arrival": "CAL      4 Aug 2020 at 14:35",
+    "Departure": "4 Aug 2020 at 13:05   DOV",
+    "Arrival": "CAL      4 Aug 2020 at 13:35",
     "Account": "Arrival 2 years ago"
   },
   "versions": [

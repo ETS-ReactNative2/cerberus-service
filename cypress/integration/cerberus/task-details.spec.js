@@ -462,73 +462,73 @@ describe('Render tasks from Camunda and manage them on task details Page', () =>
 
             cy.wait(2000);
 
-            cy.get('button.link-button').should('be.visible').and('have.text', 'Claim').click({ force: true });
-
-            cy.wait('@claim').then(({ response }) => {
-              expect(response.statusCode).to.equal(204);
-            });
-
-            cy.visit('/tasks');
-
-            cy.wait(2000);
-
-            cy.get('a[href="#inProgress"]').click();
-
-            cy.checkTaskUpdateAndRelistStatus('RORO_UNACCOMPANIED_FREIGHT', taskResponse);
-
-            cy.visit(`/tasks/${taskResponse.businessKey}`);
-
-            cy.contains('Issue target').click({ force: true });
-
-            cy.wait(2000);
-
-            cy.fixture('target-information.json').then((targetInfo) => {
-              cy.selectDropDownValue('mode', 'RoRo Freight');
-
-              cy.selectDropDownValue('eventPort', targetInfo.port[Math.floor(Math.random() * targetInfo.port.length)]);
-
-              cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
-
-              cy.typeTodaysDateTime('eta');
-
-              cy.selectDropDownValue('strategy', targetInfo.strategy[Math.floor(Math.random() * targetInfo.strategy.length)]);
-
-              cy.selectRadioButton('warningsIdentified', 'No');
-
-              cy.clickNext();
-
-              cy.waitForNoErrors();
-
-              cy.selectDropDownValue('teamToReceiveTheTarget', targetInfo.groups[Math.floor(Math.random() * targetInfo.groups.length)]);
-            });
-
-            cy.clickSubmit();
-
-            cy.verifySuccessfulSubmissionHeader('Target created successfully');
-
-            cy.visit('/tasks');
-
-            cy.get('a[href="#issued"]').click();
-
-            cy.checkTaskUpdateAndRelistStatus('RORO_UNACCOMPANIED_FREIGHT', taskResponse);
+            // cy.get('button.link-button').should('be.visible').and('have.text', 'Claim').click({ force: true });
+            //
+            // cy.wait('@claim').then(({ response }) => {
+            //   expect(response.statusCode).to.equal(204);
+            // });
+            //
+            // cy.visit('/tasks');
+            //
+            // cy.wait(2000);
+            //
+            // cy.get('a[href="#inProgress"]').click();
+            //
+            // cy.checkTaskUpdateAndRelistStatus('RORO_UNACCOMPANIED_FREIGHT', taskResponse);
+            //
+            // cy.visit(`/tasks/${taskResponse.businessKey}`);
+            //
+            // cy.contains('Issue target').click({ force: true });
+            //
+            // cy.wait(2000);
+            //
+            // cy.fixture('target-information.json').then((targetInfo) => {
+            //   cy.selectDropDownValue('mode', 'RoRo Freight');
+            //
+            //   cy.selectDropDownValue('eventPort', targetInfo.port[Math.floor(Math.random() * targetInfo.port.length)]);
+            //
+            //   cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
+            //
+            //   cy.typeTodaysDateTime('eta');
+            //
+            //   cy.selectDropDownValue('strategy', targetInfo.strategy[Math.floor(Math.random() * targetInfo.strategy.length)]);
+            //
+            //   cy.selectRadioButton('warningsIdentified', 'No');
+            //
+            //   cy.clickNext();
+            //
+            //   cy.waitForNoErrors();
+            //
+            //   cy.selectDropDownValue('teamToReceiveTheTarget', targetInfo.groups[Math.floor(Math.random() * targetInfo.groups.length)]);
+            // });
+            //
+            // cy.clickSubmit();
+            //
+            // cy.verifySuccessfulSubmissionHeader('Target created successfully');
+            //
+            // cy.visit('/tasks');
+            //
+            // cy.get('a[href="#issued"]').click();
+            //
+            // cy.checkTaskUpdateAndRelistStatus('RORO_UNACCOMPANIED_FREIGHT', taskResponse);
           });
         });
       });
 
       // COP-8703 Check Task is no more listed on completed tab
-      cy.get('a[href="#complete"]').click();
-      const nextPage = 'a[data-test="next"]';
-      cy.get('body').then(($el) => {
-        if ($el.find(nextPage).length > 0) {
-          cy.findTaskInAllThePages(businessKey.replace(/\//g, '_'), null, null).then((taskFound) => {
-            expect(taskFound).to.equal(false);
-          });
-        } else {
-          cy.findTaskInSinglePage(businessKey.replace(/\//g, '_'), null, null).then((taskFound) => {
-            expect(taskFound).to.equal(false);
-          });
-        }
-      });
+      // cy.get('a[href="#complete"]').click();
+      // const nextPage = 'a[data-test="next"]';
+      // cy.get('body').then(($el) => {
+      //   if ($el.find(nextPage).length > 0) {
+      //     cy.findTaskInAllThePages(businessKey.replace(/\//g, '_'), null, null).then((taskFound) => {
+      //       expect(taskFound).to.equal(false);
+      //     });
+      //   } else {
+      //     cy.findTaskInSinglePage(businessKey.replace(/\//g, '_'), null, null).then((taskFound) => {
+      //       expect(taskFound).to.equal(false);
+      //     });
+      //   }
+      // });
     });
   });
 

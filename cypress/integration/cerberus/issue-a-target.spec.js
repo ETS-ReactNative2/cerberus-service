@@ -1,6 +1,7 @@
 describe('Issue target from cerberus UI using target sheet information form', () => {
   let dateNowFormatted;
   let date;
+  let etaDateTimeHintText = 'Please note, the date and time displayed here is in local time not UTC time';
   beforeEach(() => {
     date = new Date();
     dateNowFormatted = Cypress.dayjs(date).format('DD-MM-YYYY');
@@ -99,7 +100,11 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
 
-      cy.typeTodaysDateTime('eta');
+      cy.verifyDateTime('eta', date);
+
+      cy.get('.formio-component-eta').within(() => {
+        cy.get('.govuk-hint').should('contain.text', etaDateTimeHintText);
+      });
 
       cy.verifySelectedDropdownValue('category', 'A');
 
@@ -227,7 +232,11 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
 
-      cy.typeTodaysDateTime('eta');
+      cy.verifyDateTime('eta', date);
+
+      cy.get('.formio-component-eta').within(() => {
+        cy.get('.govuk-hint').should('contain.text', etaDateTimeHintText);
+      });
 
       cy.verifySelectedDropdownValue('category', 'B');
 
@@ -353,7 +362,11 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
 
-      cy.typeTodaysDateTime('eta');
+      cy.verifyDateTime('eta', date);
+
+      cy.get('.formio-component-eta').within(() => {
+        cy.get('.govuk-hint').should('contain.text', etaDateTimeHintText);
+      });
 
       cy.verifySelectedDropdownValue('category', 'B');
 
@@ -460,7 +473,11 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
 
-      cy.typeTodaysDateTime('eta');
+      cy.verifyDateTime('eta', date);
+
+      cy.get('.formio-component-eta').within(() => {
+        cy.get('.govuk-hint').should('contain.text', etaDateTimeHintText);
+      });
 
       cy.verifySelectedDropdownValue('category', 'B');
 
@@ -594,7 +611,11 @@ describe('Issue target from cerberus UI using target sheet information form', ()
 
       cy.selectDropDownValue('issuingHub', targetInfo.issuingHub[Math.floor(Math.random() * targetInfo.issuingHub.length)]);
 
-      cy.typeTodaysDateTime('eta');
+      cy.verifyDateTime('eta', date);
+
+      cy.get('.formio-component-eta').within(() => {
+        cy.get('.govuk-hint').should('contain.text', etaDateTimeHintText);
+      });
 
       cy.verifySelectedDropdownValue('category', 'C');
 
