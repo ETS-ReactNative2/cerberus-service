@@ -2,31 +2,36 @@ import React from 'react';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import * as pluralise from 'pluralise';
-// Config
+// Constants
 import { LONG_DATE_FORMAT } from '../../../constants';
 // Components/govuk
 import Accordion from '../../../govuk/Accordion';
+// Components
+import Document from './builder/Document';
 import Booking from './builder/Booking';
 import Passenger from './builder/Passenger';
 import Voyage from './builder/Voyage';
 
 const renderDetailsOverview = (version, airlineCodes) => {
   return (
-    <div className="govuk-task-details-grid">
-      <div className="govuk-grid-column-one-third">
-        <Passenger version={version} />
-      </div>
-      <div className="govuk-grid-column-one-third vertical-dotted-line">
-        <div className="govuk-task-details-col-2">
-          <Booking version={version} />
+    <>
+      <div className="govuk-task-details-grid">
+        <div className="govuk-grid-column-one-third">
+          <Passenger version={version} />
+          <Document version={version} />
+        </div>
+        <div className="govuk-grid-column-one-third vertical-dotted-line">
+          <div className="govuk-task-details-col-2">
+            <Booking version={version} />
+          </div>
+        </div>
+        <div className="govuk-grid-column-one-third vertical-dotted-line">
+          <div className="govuk-task-details-col-3">
+            <Voyage version={version} airlineCodes={airlineCodes} />
+          </div>
         </div>
       </div>
-      <div className="govuk-grid-column-one-third vertical-dotted-line">
-        <div className="govuk-task-details-col-3">
-          <Voyage version={version} airlineCodes={airlineCodes} />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Document should render the document component 1`] = `
+<div
+  className="task-details-container"
+>
+  <h3
+    className="govuk-heading-s"
+  >
+    Document
+  </h3>
+  <div
+    className="govuk-task-details-grid-column"
+  >
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Type
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Number
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Document nationality
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Country of issue
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Issued by Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Valid from
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Valid To
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Name
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+    </div>
+    <div
+      className="govuk-!-margin-bottom-2"
+    >
+      <p
+        className="govuk-!-margin-bottom-0 font__light"
+      >
+        Date of birth
+      </p>
+      <p
+        className="govuk-!-margin-bottom-0 font__bold"
+      >
+        Unknown
+      </p>
+    </div>
+  </div>
+</div>
+`;

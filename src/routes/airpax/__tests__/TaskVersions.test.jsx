@@ -83,6 +83,16 @@ describe('TaskVersions', () => {
     expect(screen.getAllByText('No rule matches')).toHaveLength(2);
   });
 
+  it('should render the document section from version', () => {
+    render(<TaskVersions taskVersions={[taskDetailsData.versions[0]]} airlineCodes={airlineCodes} />);
+    expect(screen.getByText('Document')).toBeInTheDocument();
+    expect(screen.getByText('Type')).toBeInTheDocument();
+    expect(screen.getByText('Number')).toBeInTheDocument();
+    expect(screen.getByText('Document nationality')).toBeInTheDocument();
+    expect(screen.getByText('Country of issue')).toBeInTheDocument();
+    expect(screen.getByText('Valid from')).toBeInTheDocument();
+  });
+
   it('should render the booking section from version', () => {
     render(<TaskVersions taskVersions={[taskDetailsData.versions[0]]} airlineCodes={airlineCodes} />);
     expect(screen.getByText('Booking')).toBeInTheDocument();
