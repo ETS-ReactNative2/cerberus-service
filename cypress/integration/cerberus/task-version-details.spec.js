@@ -1388,7 +1388,7 @@ describe('Task Details of different tasks on task details Page', () => {
       reListTask.variables.rbtPayload.value = JSON.stringify(reListTask.variables.rbtPayload.value);
       cy.postTasks(reListTask, null).then((taskResponse) => {
         cy.wait(10000);
-        updateDateTime = Cypress.dayjs().format(dateFormat);
+        updateDateTime = Cypress.dayjs().utc().format(dateFormat);
         cy.checkTaskDisplayed(`${taskResponse.businessKey}`);
         cy.get('.task-versions--left .govuk-caption-m').eq(0).should('have.text', updateDateTime);
         cy.get('.task-versions--left .govuk-caption-m').eq(1).invoke('text').then((value) => {
@@ -1403,6 +1403,8 @@ describe('Task Details of different tasks on task details Page', () => {
         cy.visit('/tasks');
 
         cy.contains('Clear all filters').click();
+
+        cy.wait(2000);
 
         cy.get('.govuk-checkboxes [value="RORO_TOURIST"]')
           .click({ force: true });
