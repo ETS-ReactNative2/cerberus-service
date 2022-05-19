@@ -34,6 +34,7 @@ spec:
                   operator: In
                   values:
                   - {{.CERBERUS_UI_NAME}}
+              topologyKey: failure-domain.beta.kubernetes.io/zone
       restartPolicy: Always
       containers:
       - name: {{.CERBERUS_UI_NAME}}-proxy
